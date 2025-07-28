@@ -1,0 +1,13 @@
+image: node:16
+
+pipelines:
+  default:
+    - step:
+        name: Build Vue.js Application
+        caches:
+          - node
+        script:
+          - npm install
+          - npm run build
+        artifacts:
+          - dist/**

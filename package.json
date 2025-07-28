@@ -1,0 +1,32 @@
+{
+  "name": "balanceuadmin",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "_notes": "deploy scripts need to be modified before using",
+    "serve": "vite preview",
+    "build": "vite build",
+    "deploy:beta": "robocopy dist \"\\\\bats-betawebapp3.bluecat.arizona.edu\\inetpub\\beta.apps.ba.arizona.edu\\BalanceUAdmin\" /E /NFL /NDL /NJH /NJS /NC /NS",
+    "deploy:prod": "robocopy dist \"\\\\bats-webapps3.bluecat.arizona.edu\\inetpub\\apps.ba.arizona.edu\\BalanceUAdmin\" /E /NFL /NDL /NJH /NJS /NC /NS",
+    "build:deploy:beta": "npm run build && npm run deploy:beta",
+    "build:deploy:prod": "npm run build && npm run deploy:prod",
+    "dev": "vite",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@mdi/font": "7.4.47",
+    "js-cookie": "^3.0.5",
+    "lodash": "^4.17.21",
+    "pinia": "^3.0.1",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0",
+    "vuetify": "^3.7.16",
+    "webfontloader": "^1.6.28"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^6.2.2",
+    "vite-plugin-vuetify": "^2.1.0"
+  }
+}
