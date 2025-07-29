@@ -1,32 +1,34 @@
 <template>
-	<v-container fluid class="pa-6">
+	<v-container fluid class="pa-4 pa-md-6">
 		
 		<!-- Header Section with User Profile -->
-		<v-row class="mb-6">
+		<v-row class="mb-4 mb-md-6">
 			<v-col cols="12">
-				<v-card color="primary" class="user-header-card" elevation="6">
-					<v-card-text class="pa-6">
+				<v-card color="primary" class="user-header-card" elevation="4">
+					<v-card-text class="pa-4 pa-md-6">
 						<v-row align="center">
-							<v-col cols="auto">
-								<v-avatar size="80" color="accent" class="text-h4 font-weight-bold">
+							<v-col cols="12" sm="auto" class="text-center text-sm-start">
+								<v-avatar size="60" color="accent" class="text-h5 font-weight-bold">
 									{{ userInitials }}
 								</v-avatar>
 							</v-col>
-							<v-col>
-								<h1 class="text-h3 font-weight-light text-white mb-1">{{ currentUser.name }}</h1>
-								<p class="text-h6 text-white opacity-80 mb-2">{{ currentUser.role }}</p>
-								<v-chip color="success" size="small" class="mr-2">
-									<v-icon icon="mdi-check-circle" size="small" class="mr-1"></v-icon>
-									Active Session
-								</v-chip>
-								<v-chip color="info" size="small">
-									Last Login: {{ formatTime(currentUser.lastLogin) }}
-								</v-chip>
+							<v-col cols="12" sm="6" md="true" class="text-center text-sm-start">
+								<h1 class="text-h4 text-md-h3 font-weight-light text-white mb-1">{{ currentUser.name }}</h1>
+								<p class="text-body-1 text-md-h6 text-white opacity-80 mb-2">{{ currentUser.role }}</p>
+								<div class="d-flex flex-wrap justify-center justify-sm-start gap-2">
+									<v-chip color="success" size="small">
+										<v-icon icon="mdi-check-circle" size="small" class="mr-1"></v-icon>
+										Active Session
+									</v-chip>
+									<v-chip color="info" size="small">
+										Last Login: {{ formatTime(currentUser.lastLogin) }}
+									</v-chip>
+								</div>
 							</v-col>
-							<v-col cols="auto" class="text-right">
+							<v-col cols="12" sm="auto" class="text-center text-sm-end">
 								<div class="text-white">
-									<div class="text-h6 font-weight-medium">{{ formatTime(new Date()) }}</div>
-									<div class="text-body-2 opacity-80">{{ formatDate(new Date()) }}</div>
+									<div class="text-body-1 text-md-h6 font-weight-medium">{{ formatTime(new Date()) }}</div>
+									<div class="text-caption text-md-body-2 opacity-80">{{ formatDate(new Date()) }}</div>
 								</div>
 							</v-col>
 						</v-row>
@@ -36,73 +38,73 @@
 		</v-row>
 
 		<!-- Key Metrics Cards -->
-		<v-row class="mb-6">
-			<v-col cols="12" sm="6" md="3">
-				<v-card color="success" class="metric-card" elevation="4">
-					<v-card-text class="pa-4 text-center">
-						<v-icon icon="mdi-cash-multiple" size="x-large" color="white" class="mb-2"></v-icon>
-						<div class="text-h4 font-weight-bold text-white">${{ metrics.totalVolume.toLocaleString() }}</div>
-						<div class="text-body-2 text-white opacity-80">Total Volume Today</div>
+		<v-row class="mb-4 mb-md-6">
+			<v-col cols="6" sm="6" md="3" xl="3">
+				<v-card color="success" class="metric-card" elevation="3">
+					<v-card-text class="pa-3 pa-md-4 text-center">
+						<v-icon icon="mdi-cash-multiple" size="large" color="white" class="mb-2"></v-icon>
+						<div class="text-h5 text-md-h4 font-weight-bold text-white">${{ metrics.totalVolume.toLocaleString() }}</div>
+						<div class="text-caption text-md-body-2 text-white opacity-80">Total Volume Today</div>
 					</v-card-text>
 				</v-card>
 			</v-col>
-			<v-col cols="12" sm="6" md="3">
-				<v-card color="info" class="metric-card" elevation="4">
-					<v-card-text class="pa-4 text-center">
-						<v-icon icon="mdi-credit-card" size="x-large" color="white" class="mb-2"></v-icon>
-						<div class="text-h4 font-weight-bold text-white">{{ metrics.totalTransactions.toLocaleString() }}</div>
-						<div class="text-body-2 text-white opacity-80">Transactions Today</div>
+			<v-col cols="6" sm="6" md="3" xl="3">
+				<v-card color="info" class="metric-card" elevation="3">
+					<v-card-text class="pa-3 pa-md-4 text-center">
+						<v-icon icon="mdi-credit-card" size="large" color="white" class="mb-2"></v-icon>
+						<div class="text-h5 text-md-h4 font-weight-bold text-white">{{ metrics.totalTransactions.toLocaleString() }}</div>
+						<div class="text-caption text-md-body-2 text-white opacity-80">Transactions Today</div>
 					</v-card-text>
 				</v-card>
 			</v-col>
-			<v-col cols="12" sm="6" md="3">
-				<v-card color="warning" class="metric-card" elevation="4">
-					<v-card-text class="pa-4 text-center">
-						<v-icon icon="mdi-account-group" size="x-large" color="white" class="mb-2"></v-icon>
-						<div class="text-h4 font-weight-bold text-white">{{ metrics.activeUsers.toLocaleString() }}</div>
-						<div class="text-body-2 text-white opacity-80">Active Users</div>
+			<v-col cols="6" sm="6" md="3" xl="3">
+				<v-card color="warning" class="metric-card" elevation="3">
+					<v-card-text class="pa-3 pa-md-4 text-center">
+						<v-icon icon="mdi-account-group" size="large" color="white" class="mb-2"></v-icon>
+						<div class="text-h5 text-md-h4 font-weight-bold text-white">{{ metrics.activeUsers.toLocaleString() }}</div>
+						<div class="text-caption text-md-body-2 text-white opacity-80">Active Users</div>
 					</v-card-text>
 				</v-card>
 			</v-col>
-			<v-col cols="12" sm="6" md="3">
-				<v-card color="secondary" class="metric-card" elevation="4">
-					<v-card-text class="pa-4 text-center">
-						<v-icon icon="mdi-server-network" size="x-large" color="white" class="mb-2"></v-icon>
-						<div class="text-h4 font-weight-bold text-white">{{ metrics.systemsOnline }}/{{ metrics.systemsTotal }}</div>
-						<div class="text-body-2 text-white opacity-80">Systems Online</div>
+			<v-col cols="6" sm="6" md="3" xl="3">
+				<v-card color="secondary" class="metric-card" elevation="3">
+					<v-card-text class="pa-3 pa-md-4 text-center">
+						<v-icon icon="mdi-server-network" size="large" color="white" class="mb-2"></v-icon>
+						<div class="text-h5 text-md-h4 font-weight-bold text-white">{{ metrics.systemsOnline }}/{{ metrics.systemsTotal }}</div>
+						<div class="text-caption text-md-body-2 text-white opacity-80">Systems Online</div>
 					</v-card-text>
 				</v-card>
 			</v-col>
 		</v-row>
 
 		<!-- Charts Section -->
-		<v-row class="mb-6">
-			<v-col cols="12" md="6">
-				<v-card color="accent" class="chart-card" elevation="4">
-					<v-card-title class="text-primary font-weight-medium">
+		<v-row class="mb-4 mb-md-6">
+			<v-col cols="12" lg="6" xl="6">
+				<v-card color="accent" class="chart-card" elevation="3">
+					<v-card-title class="text-primary font-weight-medium pa-3 pa-md-4">
 						<v-icon icon="mdi-chart-line" class="mr-2"></v-icon>
-						Transaction Volume (Last 30 Minutes)
+						<span class="text-body-1 text-md-h6">Transaction Volume (Last 30 Minutes)</span>
 					</v-card-title>
-					<v-card-text>
+					<v-card-text class="pa-2 pa-md-3">
 						<apexchart
 							type="line"
-							height="300"
+							:height="chartHeight"
 							:options="transactionChartOptions"
 							:series="transactionChartSeries"
 						></apexchart>
 					</v-card-text>
 				</v-card>
 			</v-col>
-			<v-col cols="12" md="6">
-				<v-card color="accent" class="chart-card" elevation="4">
-					<v-card-title class="text-primary font-weight-medium">
+			<v-col cols="12" lg="6" xl="6">
+				<v-card color="accent" class="chart-card" elevation="3">
+					<v-card-title class="text-primary font-weight-medium pa-3 pa-md-4">
 						<v-icon icon="mdi-currency-usd" class="mr-2"></v-icon>
-						Dollar Volume (Last 30 Minutes)
+						<span class="text-body-1 text-md-h6">Dollar Volume (Last 30 Minutes)</span>
 					</v-card-title>
-					<v-card-text>
+					<v-card-text class="pa-2 pa-md-3">
 						<apexchart
 							type="area"
-							height="300"
+							:height="chartHeight"
 							:options="dollarChartOptions"
 							:series="dollarChartSeries"
 						></apexchart>
@@ -115,10 +117,10 @@
 		<v-row>
 			<!-- Transactions Table -->
 			<v-col cols="12" lg="8">
-				<v-card color="secondary" class="transactions-card" elevation="6">
-					<v-card-title class="text-white font-weight-medium d-flex align-center">
+				<v-card color="secondary" class="transactions-card" elevation="4">
+					<v-card-title class="text-white font-weight-medium d-flex align-center pa-3 pa-md-4">
 						<v-icon icon="mdi-format-list-bulleted" class="mr-2"></v-icon>
-						Recent Transactions
+						<span class="text-body-1 text-md-h6">Recent Transactions</span>
 						<v-spacer></v-spacer>
 						<v-chip color="accent" size="small">
 							Live Updates
@@ -126,7 +128,7 @@
 					</v-card-title>
 					
 					<!-- Search Bar -->
-					<v-card-text class="pb-0">
+					<v-card-text class="pb-0 pa-3 pa-md-4">
 						<v-text-field
 							v-model="search"
 							prepend-inner-icon="mdi-magnify"
@@ -139,12 +141,12 @@
 						></v-text-field>
 					</v-card-text>
 
-					<v-card-text>
+					<v-card-text class="pa-2 pa-md-3">
 						<v-data-table
 							:headers="transactionHeaders"
 							:items="filteredTransactions"
 							:search="search"
-							:items-per-page="25"
+							:items-per-page="itemsPerPage"
 							class="custom-table"
 							density="compact"
 						>
@@ -153,7 +155,7 @@
 							</template>
 							<template v-slot:item.amount="{ item }">
 								<v-chip
-									:color="item.amount < 0 ? 'error' : 'success'"
+									color="primary"
 									size="small"
 									variant="flat"
 								>
@@ -182,17 +184,17 @@
 			<!-- Right Sidebar -->
 			<v-col cols="12" lg="4">
 				<!-- System Alerts -->
-				<v-card color="error" class="mb-4 alerts-card" elevation="4">
-					<v-card-title class="text-white font-weight-medium">
+				<v-card color="error" class="mb-3 mb-md-4 alerts-card" elevation="3">
+					<v-card-title class="text-white font-weight-medium pa-3 pa-md-4">
 						<v-icon icon="mdi-alert-circle" class="mr-2"></v-icon>
-						System Alerts
+						<span class="text-body-1 text-md-h6">System Alerts</span>
 						<v-spacer></v-spacer>
 						<v-chip color="white" text-color="error" size="small">
 							{{ alerts.length }}
 						</v-chip>
 					</v-card-title>
-					<v-card-text>
-						<div v-for="alert in alerts" :key="alert.id" class="mb-3">
+					<v-card-text class="pa-2 pa-md-3">
+						<div v-for="alert in alerts" :key="alert.id" class="mb-2">
 							<v-alert
 								:type="alert.severity === 'critical' ? 'error' : alert.severity === 'high' ? 'warning' : 'info'"
 								density="compact"
@@ -207,17 +209,17 @@
 				</v-card>
 
 				<!-- Quick Actions -->
-				<v-card color="info" class="actions-card" elevation="4">
-					<v-card-title class="text-white font-weight-medium">
+				<v-card color="info" class="actions-card" elevation="3">
+					<v-card-title class="text-white font-weight-medium pa-3 pa-md-4">
 						<v-icon icon="mdi-lightning-bolt" class="mr-2"></v-icon>
-						Quick Actions
+						<span class="text-body-1 text-md-h6">Quick Actions</span>
 					</v-card-title>
-					<v-card-text>
+					<v-card-text class="pa-2 pa-md-3">
 						<v-btn 
 							color="accent" 
 							block 
-							size="large" 
-							class="mb-3"
+							:size="buttonSize" 
+							class="mb-2 mb-md-3"
 							@click="showActionDialog('deactivate')"
 						>
 							<v-icon icon="mdi-account-off" class="mr-2"></v-icon>
@@ -226,8 +228,8 @@
 						<v-btn 
 							color="accent" 
 							block 
-							size="large" 
-							class="mb-3"
+							:size="buttonSize" 
+							class="mb-2 mb-md-3"
 							@click="showActionDialog('addFunds')"
 						>
 							<v-icon icon="mdi-cash-plus" class="mr-2"></v-icon>
@@ -236,7 +238,7 @@
 						<v-btn 
 							color="accent" 
 							block 
-							size="large"
+							:size="buttonSize"
 							@click="showActionDialog('generateReport')"
 						>
 							<v-icon icon="mdi-file-chart" class="mr-2"></v-icon>
@@ -349,16 +351,33 @@ export default {
 			return this.transactions
 		},
 		
+		// Responsive properties
+		chartHeight() {
+			return this.$vuetify.display.mobile ? 250 : this.$vuetify.display.mdAndUp ? 300 : 280
+		},
+		
+		itemsPerPage() {
+			return this.$vuetify.display.mobile ? 10 : this.$vuetify.display.mdAndUp ? 25 : 15
+		},
+		
+		buttonSize() {
+			return this.$vuetify.display.mobile ? 'default' : 'large'
+		},
+		
 		transactionChartOptions() {
 			return {
 				chart: {
 					type: 'line',
-					height: 300,
+					height: this.chartHeight,
 					animations: {
 						enabled: true,
-						easing: 'linear',
+						easing: 'easeinout',
+						speed: 300,
+						animateGradually: {
+							enabled: false
+						},
 						dynamicAnimation: {
-							speed: 1000
+							enabled: false
 						}
 					},
 					toolbar: { show: false },
@@ -408,12 +427,16 @@ export default {
 			return {
 				chart: {
 					type: 'area',
-					height: 300,
+					height: this.chartHeight,
 					animations: {
 						enabled: true,
-						easing: 'linear',
+						easing: 'easeinout',
+						speed: 300,
+						animateGradually: {
+							enabled: false
+						},
 						dynamicAnimation: {
-							speed: 1000
+							enabled: false
 						}
 					},
 					toolbar: { show: false },
@@ -612,13 +635,14 @@ export default {
 
 .metric-card {
 	border-radius: 12px !important;
-	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
 	cursor: pointer;
+	height: 100%;
 }
 
 .metric-card:hover {
-	transform: translateY(-4px);
-	box-shadow: 0 12px 40px rgba(0,0,0,0.2) !important;
+	transform: translateY(-2px);
+	box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
 }
 
 .chart-card {
@@ -700,29 +724,57 @@ export default {
 }
 
 /* Responsive adjustments */
-@media (max-width: 1280px) {
-	.user-header-card :deep(.v-row) {
-		flex-direction: column;
-		text-align: center;
-	}
-	
-	.user-header-card :deep(.v-col:last-child) {
-		text-align: center !important;
-		margin-top: 16px;
-	}
-}
-
-@media (max-width: 768px) {
-	.custom-table :deep(.v-data-table__wrapper) {
-		font-size: 0.875rem;
+@media (max-width: 960px) {
+	.user-header-card .v-card-text {
+		padding: 16px !important;
 	}
 	
 	.metric-card .v-card-text {
 		padding: 12px !important;
 	}
 	
-	.metric-card .text-h4 {
+	.metric-card .text-h5 {
+		font-size: 1.25rem !important;
+	}
+}
+
+@media (max-width: 600px) {
+	.custom-table :deep(.v-data-table__wrapper) {
+		font-size: 0.8rem;
+	}
+	
+	.metric-card .text-h5 {
+		font-size: 1.1rem !important;
+	}
+	
+	.metric-card .v-icon {
 		font-size: 1.5rem !important;
+	}
+}
+
+@media (min-width: 1920px) {
+	.v-container {
+		max-width: 1800px;
+		margin: 0 auto;
+	}
+	
+	.metric-card .text-h5 {
+		font-size: 1.75rem !important;
+	}
+	
+	.chart-card {
+		min-height: 400px;
+	}
+}
+
+@media (min-width: 2560px) {
+	.v-container {
+		max-width: 2400px;
+		margin: 0 auto;
+	}
+	
+	.metric-card .text-h5 {
+		font-size: 2rem !important;
 	}
 }
 
