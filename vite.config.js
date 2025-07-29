@@ -12,6 +12,16 @@ export default defineConfig({
   plugins: [
     vue(),
     vuetify({ autoImport: true }),
+    // This part is critical
+    {
+      name: 'spa-fallback',
+      apply: 'build',
+      generateBundle(_, bundle) {
+        if (bundle['index.html']) {
+          bundle['404.html'] = { ...bundle['index.html'] }
+        }
+      }
+    }
   ],
   resolve: {
     alias: {

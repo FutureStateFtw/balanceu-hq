@@ -91,7 +91,11 @@ state: () => ({
                 success: '#4CAF50',
                 warning: '#FF9800',
                 error: '#F44336',
-                info: '#E91E63'
+                info: '#E91E63',
+                // Tonal colors for better contrast
+                tonalLight: '#F06292',
+                tonalMedium: '#E91E63',
+                tonalDark: '#AD1457'
             }
         },
         midnight: {
@@ -105,7 +109,11 @@ state: () => ({
                 success: '#4CAF50',
                 warning: '#FF9800',
                 error: '#F44336',
-                info: '#4169E1'
+                info: '#4169E1',
+                // Tonal colors for better contrast
+                tonalLight: '#4169E1',
+                tonalMedium: '#2F4F4F',
+                tonalDark: '#0F0F47'
             }
         },
         golden: {
@@ -119,7 +127,11 @@ state: () => ({
                 success: '#4CAF50',
                 warning: '#FFA726',
                 error: '#F44336',
-                info: '#FFD700'
+                info: '#FFD700',
+                // Tonal colors for better contrast
+                tonalLight: '#F4D03F',
+                tonalMedium: '#DAA520',
+                tonalDark: '#9A7D0A'
             }
         },
         arctic: {
@@ -133,7 +145,11 @@ state: () => ({
                 success: '#4CAF50',
                 warning: '#FF9800',
                 error: '#F44336',
-                info: '#87CEEB'
+                info: '#87CEEB',
+                // Tonal colors for better contrast
+                tonalLight: '#87CEEB',
+                tonalMedium: '#5F9EA0',
+                tonalDark: '#2F4F4F'
             }
         }
     }

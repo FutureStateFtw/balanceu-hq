@@ -1,0 +1,446 @@
+/* Liquid Glass CSS - Apple-inspired design system */
+/* Specular highlights, glass morphism, and interactive effects */
+
+/* Base Liquid Glass Card */
+.liquid-glass-card {
+	position: relative;
+	height: 280px;
+	border-radius: 24px;
+	background: linear-gradient(135deg, 
+		rgba(255, 255, 255, 0.15) 0%, 
+		rgba(255, 255, 255, 0.05) 100%);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	overflow: hidden;
+	cursor: pointer;
+	transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	box-shadow: 
+		0 8px 32px rgba(0, 0, 0, 0.1),
+		inset 0 1px 0 rgba(255, 255, 255, 0.2),
+		0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.liquid-glass-card:hover {
+	transform: translateY(-8px) scale(1.02);
+	box-shadow: 
+		0 20px 60px rgba(0, 0, 0, 0.2),
+		inset 0 1px 0 rgba(255, 255, 255, 0.3),
+		0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.liquid-glass-card.hovered .glass-border-glow {
+	opacity: 1;
+	animation: borderGlow 2s ease-in-out infinite alternate;
+}
+
+/* Glass Content Container */
+.glass-content {
+	padding: 24px;
+	height: 100%;
+	position: relative;
+	z-index: 2;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Glass Icon Container with Specular Effects */
+.glass-icon-container {
+	position: relative;
+	width: 72px;
+	height: 72px;
+	margin: 0 auto 16px auto;
+	border-radius: 20px;
+	background: linear-gradient(135deg, 
+		rgba(255, 255, 255, 0.2) 0%, 
+		rgba(255, 255, 255, 0.05) 100%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	overflow: hidden;
+}
+
+.glass-icon {
+	color: rgba(255, 255, 255, 0.9) !important;
+	filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+/* Specular Highlight Effect */
+.specular-highlight {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background: radial-gradient(circle, 
+		rgba(255, 255, 255, 0.6) 0%, 
+		rgba(255, 255, 255, 0.2) 40%, 
+		transparent 70%);
+	pointer-events: none;
+	opacity: 0;
+	transition: all 0.3s ease;
+	transform: translate(-50%, -50%);
+}
+
+/* Glass Border Glow Animation */
+.glass-border-glow {
+	position: absolute;
+	top: -2px;
+	left: -2px;
+	right: -2px;
+	bottom: -2px;
+	border-radius: 26px;
+	background: linear-gradient(45deg, 
+		var(--theme-primary, #2E5984), 
+		var(--theme-secondary, #4A90E2), 
+		var(--theme-accent, #87CEEB),
+		var(--theme-primary, #2E5984));
+	background-size: 300% 300%;
+	opacity: 0;
+	z-index: 1;
+	transition: opacity 0.3s ease;
+}
+
+@keyframes borderGlow {
+	0% { background-position: 0% 50%; }
+	100% { background-position: 100% 50%; }
+}
+
+/* Glass Typography */
+.glass-title {
+	color: rgba(255, 255, 255, 0.95);
+	font-size: 18px;
+	font-weight: 600;
+	text-align: center;
+	margin-bottom: 16px;
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.glass-text {
+	text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Glass Metrics and Statistics */
+.glass-metrics {
+	flex: 1;
+}
+
+.metric-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 8px;
+	padding: 8px 0;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.metric-label {
+	color: rgba(255, 255, 255, 0.7);
+	font-size: 14px;
+}
+
+.metric-value {
+	color: rgba(255, 255, 255, 0.95);
+	font-weight: 600;
+	font-size: 14px;
+}
+
+.glass-stats {
+	text-align: center;
+}
+
+.stat-number {
+	display: block;
+	color: rgba(255, 255, 255, 0.95);
+	font-size: 24px;
+	font-weight: 700;
+	text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.stat-label {
+	color: rgba(255, 255, 255, 0.7);
+	font-size: 12px;
+}
+
+/* Liquid Glass Panels */
+.liquid-glass-panel {
+	position: relative;
+	border-radius: 20px;
+	background: linear-gradient(135deg, 
+		rgba(255, 255, 255, 0.12) 0%, 
+		rgba(255, 255, 255, 0.04) 100%);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	overflow: hidden;
+	cursor: pointer;
+	transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	margin-bottom: 16px;
+}
+
+.liquid-glass-panel:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+}
+
+.liquid-glass-panel.active {
+	background: linear-gradient(135deg, 
+		rgba(255, 255, 255, 0.18) 0%, 
+		rgba(255, 255, 255, 0.08) 100%);
+}
+
+/* Panel Content Animation */
+.panel-content {
+	padding: 0 20px 20px 20px;
+	animation: panelExpand 0.4s ease-out;
+}
+
+@keyframes panelExpand {
+	from { opacity: 0; transform: translateY(-10px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+/* Interaction Ripple Effect */
+.interaction-ripple {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border-radius: 50%;
+	background: radial-gradient(circle, 
+		rgba(255, 255, 255, 0.2) 0%, 
+		transparent 70%);
+	pointer-events: none;
+	transition: all 0.6s ease-out;
+	transform: translate(-50%, -50%);
+}
+
+.liquid-glass-panel:active .interaction-ripple {
+	width: 300px;
+	height: 300px;
+}
+
+/* Feature Showcase Glass Effect */
+.feature-showcase {
+	position: relative;
+	border-radius: 32px;
+	background: linear-gradient(135deg, 
+		rgba(255, 255, 255, 0.1) 0%, 
+		rgba(255, 255, 255, 0.02) 100%);
+	backdrop-filter: blur(24px);
+	-webkit-backdrop-filter: blur(24px);
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	overflow: hidden;
+	transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.feature-showcase.showcase-hovered {
+	transform: scale(1.01);
+	box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+}
+
+/* Showcase Glow Effect */
+.showcase-glow {
+	position: absolute;
+	top: -50%;
+	left: -50%;
+	width: 200%;
+	height: 200%;
+	background: radial-gradient(circle, 
+		rgba(135, 206, 235, 0.1) 0%, 
+		transparent 70%);
+	opacity: 0;
+	transition: opacity 0.5s ease;
+	pointer-events: none;
+}
+
+.feature-showcase.showcase-hovered .showcase-glow {
+	opacity: 1;
+}
+
+/* Glass Avatar Effects */
+.glass-avatar {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	background: linear-gradient(135deg, 
+		var(--theme-secondary, #4A90E2), 
+		var(--theme-accent, #87CEEB));
+	border: 2px solid rgba(255, 255, 255, 0.3);
+	margin-left: -8px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Animated Chart Effects */
+.mini-chart {
+	display: flex;
+	align-items: end;
+	justify-content: space-between;
+	height: 60px;
+	margin: 16px 0;
+}
+
+.chart-bar {
+	width: 12px;
+	background: linear-gradient(to top, 
+		var(--theme-primary, #2E5984), 
+		var(--theme-accent, #87CEEB));
+	border-radius: 6px;
+	animation: chartGrow 2s ease-out;
+	box-shadow: 0 0 10px rgba(135, 206, 235, 0.4);
+}
+
+@keyframes chartGrow {
+	from { height: 0; }
+	to { height: var(--final-height); }
+}
+
+/* Pulse Animation */
+.pulse-dot {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #4CAF50;
+	animation: pulse 2s ease-in-out infinite;
+	box-shadow: 0 0 10px #4CAF50;
+}
+
+@keyframes pulse {
+	0%, 100% { opacity: 1; transform: scale(1); }
+	50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+/* Floating Elements Animation */
+.floating-elements {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	overflow: hidden;
+}
+
+.floating-dot {
+	position: absolute;
+	width: 4px;
+	height: 4px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.4);
+	animation: float 6s ease-in-out infinite;
+}
+
+.floating-dot:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+.floating-dot:nth-child(2) { top: 60%; left: 20%; animation-delay: 1s; }
+.floating-dot:nth-child(3) { top: 30%; left: 80%; animation-delay: 2s; }
+.floating-dot:nth-child(4) { top: 80%; left: 70%; animation-delay: 3s; }
+.floating-dot:nth-child(5) { top: 40%; left: 90%; animation-delay: 4s; }
+.floating-dot:nth-child(6) { top: 70%; left: 5%; animation-delay: 5s; }
+
+@keyframes float {
+	0%, 100% { transform: translateY(0px) scale(1); opacity: 0.4; }
+	50% { transform: translateY(-20px) scale(1.2); opacity: 0.8; }
+}
+
+/* Status Indicators */
+.status-indicator {
+	padding: 4px 12px;
+	border-radius: 12px;
+	font-size: 12px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.status-indicator.secure {
+	background: rgba(76, 175, 80, 0.2);
+	color: #4CAF50;
+	border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.status-indicator.optimal {
+	background: rgba(33, 150, 243, 0.2);
+	color: #2196F3;
+	border: 1px solid rgba(33, 150, 243, 0.3);
+}
+
+/* Metric Bars with Glass Effect */
+.metric-bar {
+	flex: 2;
+	height: 6px;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 3px;
+	overflow: hidden;
+}
+
+.metric-fill {
+	height: 100%;
+	background: linear-gradient(90deg, 
+		var(--theme-primary, #2E5984), 
+		var(--theme-accent, #87CEEB));
+	border-radius: 3px;
+	transition: width 0.8s ease-out;
+}
+
+/* Feature Item Glass Effect */
+.feature-item {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 16px;
+	border-radius: 16px;
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+	background: rgba(255, 255, 255, 0.1);
+	transform: translateY(-2px);
+}
+
+.feature-icon {
+	width: 40px;
+	height: 40px;
+	border-radius: 12px;
+	background: linear-gradient(135deg, 
+		var(--theme-primary, #2E5984), 
+		var(--theme-accent, #87CEEB));
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Responsive Glass Effects */
+@media (max-width: 768px) {
+	.liquid-glass-card {
+		height: 240px;
+	}
+	
+	.glass-content {
+		padding: 16px;
+	}
+	
+	.glass-icon-container {
+		width: 56px;
+		height: 56px;
+		margin: 0 auto 12px auto;
+	}
+	
+	.glass-title {
+		font-size: 16px;
+		margin-bottom: 12px;
+	}
+	
+	.stat-number {
+		font-size: 20px;
+	}
+}
+
+/* Container for Liquid Glass Components */
+.liquid-glass-container {
+	min-height: 100vh;
+	position: relative;
+	overflow: hidden;
+}

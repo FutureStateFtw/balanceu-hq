@@ -168,6 +168,8 @@ export const getUpdatedMetrics = () => {
 };
 
 // Function to add new transaction (simulate real-time)
+let transactionIdCounter = Date.now(); // Start with current timestamp
+
 export const generateNewTransaction = () => {
   const balanceType = balanceTypes[Math.floor(Math.random() * balanceTypes.length)];
   let amount, remaining;
@@ -180,8 +182,11 @@ export const generateNewTransaction = () => {
     remaining = Math.random() * 500 + 50;
   }
   
+  // Increment counter to ensure unique IDs even when called multiple times in same millisecond
+  transactionIdCounter++;
+  
   return {
-    id: Date.now(), // Use timestamp as unique ID
+    id: transactionIdCounter, // Use incrementing counter for unique ID
     timestamp: new Date(),
     location: locations[Math.floor(Math.random() * locations.length)],
     item: items[Math.floor(Math.random() * items.length)],

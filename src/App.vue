@@ -52,6 +52,7 @@
 				<v-list-item to="/" title="Home" prepend-icon="mdi-home" class="themed-list-item"></v-list-item>
 				<v-list-item to="/About" title="About" prepend-icon="mdi-information" class="themed-list-item"></v-list-item>
 				<v-list-item to="/theme" title="Theme Selection" prepend-icon="mdi-palette" class="themed-list-item"></v-list-item>
+				<v-list-item to="/liquid-glass" title="Liquid Glass" prepend-icon="mdi-glass-fragile" class="themed-list-item"></v-list-item>
 
 				<v-divider class="mt-4 mb-4 themed-divider"></v-divider>
 				<v-spacer></v-spacer>

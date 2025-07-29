@@ -148,6 +148,77 @@
                         </v-badge>
                     </v-col>
                 </v-row>
+
+                <!-- Tonal Colors Section -->
+                <v-row class="mt-12">
+                    <v-col cols="12">
+                        <h3 class="text-h5 mb-6 text-white font-weight-light text-center">Tonal Colors</h3>
+                        
+                        <!-- Tonal Buttons Row -->
+                        <v-row class="justify-center mb-6">
+                            <v-col cols="12" class="text-center">
+                                <v-btn color="tonalLight" size="large" class="ma-2 px-6 text-white">Tonal Light</v-btn>
+                                <v-btn color="tonalMedium" size="large" class="ma-2 px-6 text-white">Tonal Medium</v-btn>
+                                <v-btn color="tonalDark" size="large" class="ma-2 px-6 text-white">Tonal Dark</v-btn>
+                            </v-col>
+                        </v-row>
+
+                        <!-- Tonal Cards Row -->
+                        <v-row class="justify-center mb-6">
+                            <v-col cols="12" sm="6" md="4">
+                                <v-card color="tonalLight" class="theme-demo-card">
+                                    <v-card-title class="text-white">Tonal Light</v-card-title>
+                                    <v-card-text class="text-white">
+                                        Lighter tonal color for subtle backgrounds and highlights.
+                                    </v-card-text>
+                                </v-card>
+                            </v-col>
+                            <v-col cols="12" sm="6" md="4">
+                                <v-card color="tonalMedium" class="theme-demo-card">
+                                    <v-card-title class="text-white">Tonal Medium</v-card-title>
+                                    <v-card-text class="text-white">
+                                        Medium tonal color for balanced contrast and readability.
+                                    </v-card-text>
+                                </v-card>
+                            </v-col>
+                            <v-col cols="12" sm="6" md="4">
+                                <v-card color="tonalDark" class="theme-demo-card">
+                                    <v-card-title class="text-white">Tonal Dark</v-card-title>
+                                    <v-card-text class="text-white">
+                                        Darker tonal color for strong contrast and emphasis.
+                                    </v-card-text>
+                                </v-card>
+                            </v-col>
+                        </v-row>
+
+                        <!-- Tonal Chips Row -->
+                        <v-row class="justify-center mb-6">
+                            <v-col cols="12" class="text-center">
+                                <v-chip color="tonalLight" size="large" class="ma-2 text-white" label>Light Tonal</v-chip>
+                                <v-chip color="tonalMedium" size="large" class="ma-2 text-white" label>Medium Tonal</v-chip>
+                                <v-chip color="tonalDark" size="large" class="ma-2 text-white" label>Dark Tonal</v-chip>
+                            </v-col>
+                        </v-row>
+
+                        <!-- Tonal Progress Bars -->
+                        <v-row class="justify-center">
+                            <v-col cols="12" md="8">
+                                <div class="mb-4">
+                                    <p class="text-white mb-2">Tonal Light Progress</p>
+                                    <v-progress-linear color="tonalLight" model-value="85" height="10" rounded></v-progress-linear>
+                                </div>
+                                <div class="mb-4">
+                                    <p class="text-white mb-2">Tonal Medium Progress</p>
+                                    <v-progress-linear color="tonalMedium" model-value="70" height="10" rounded></v-progress-linear>
+                                </div>
+                                <div class="mb-4">
+                                    <p class="text-white mb-2">Tonal Dark Progress</p>
+                                    <v-progress-linear color="tonalDark" model-value="55" height="10" rounded></v-progress-linear>
+                                </div>
+                            </v-col>
+                        </v-row>
+                    </v-col>
+                </v-row>
             </v-col>
         </v-row>
     </v-container>
