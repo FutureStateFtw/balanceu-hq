@@ -20,6 +20,23 @@
 		            <v-col class="text-white" :class="isPhone ? 'text-h6' : ''"
 		            	align="start">{{ui.pageTitle}}</v-col>
 
+		            <!-- USER PROFILE SECTION -->
+		            <v-col v-if="!isPhone" cols="auto" class="flex-grow-0 flex-shrink-0 pr-4">
+		            	<v-card color="rgba(255, 255, 255, 0.1)" class="user-profile-card pa-3" elevation="0">
+		            		<v-row align="center" no-gutters>
+		            			<v-col cols="auto" class="mr-3">
+		            				<v-avatar size="40" color="accent" class="text-body-2 font-weight-bold">
+		            					{{ userInitials }}
+		            				</v-avatar>
+		            			</v-col>
+		            			<v-col class="text-left">
+		            				<div class="text-body-2 font-weight-medium text-white">{{ currentUser.name }}</div>
+		            				<div class="text-caption text-white opacity-80">{{ currentUser.role }}</div>
+		            			</v-col>
+		            		</v-row>
+		            	</v-card>
+		            </v-col>
+
 		            <!-- DATABASE INDICATOR -->
 		            <v-col v-if="user.isSuperUser && !isPhone" class="flex-grow-0 flex-shrink-1 pr-9 text-body-1 text-no-wrap font-weight-light text-white" >
 		            	
@@ -67,10 +84,23 @@ name: 'App',
 
 data: () => ({
 	drawer: false,
+	// User data for profile
+	currentUser: {
+		name: 'David Davidson',
+		role: 'Administrative User'
+	}
 }),
 
 computed: {
 	isPhone() { return this.$vuetify.display.mobile },  // A SHORTER HELPER FUNCTION
+	
+	userInitials() {
+		return this.currentUser.name
+			.split(' ')
+			.map(n => n[0])
+			.join('')
+			.toUpperCase()
+	}
 },
 
 methods: {	
@@ -115,6 +145,19 @@ methods: {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* User profile card in app bar */
+.user-profile-card {
+    border-radius: 12px !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.user-profile-card:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
 }
 
 /* Ensure main content area is transparent to show gradient */

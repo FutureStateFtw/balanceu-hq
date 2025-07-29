@@ -1,42 +1,6 @@
 <template>
 	<v-container fluid class="pa-4 pa-md-6">
 		
-		<!-- Header Section with User Profile -->
-		<v-row class="mb-4 mb-md-6">
-			<v-col cols="12">
-				<v-card color="primary" class="user-header-card" elevation="4">
-					<v-card-text class="pa-4 pa-md-6">
-						<v-row align="center">
-							<v-col cols="12" sm="auto" class="text-center text-sm-start">
-								<v-avatar size="60" color="accent" class="text-h5 font-weight-bold">
-									{{ userInitials }}
-								</v-avatar>
-							</v-col>
-							<v-col cols="12" sm="6" md="true" class="text-center text-sm-start">
-								<h1 class="text-h4 text-md-h3 font-weight-light text-white mb-1">{{ currentUser.name }}</h1>
-								<p class="text-body-1 text-md-h6 text-white opacity-80 mb-2">{{ currentUser.role }}</p>
-								<div class="d-flex flex-wrap justify-center justify-sm-start gap-2">
-									<v-chip color="success" size="small">
-										<v-icon icon="mdi-check-circle" size="small" class="mr-1"></v-icon>
-										Active Session
-									</v-chip>
-									<v-chip color="info" size="small">
-										Last Login: {{ formatTime(currentUser.lastLogin) }}
-									</v-chip>
-								</div>
-							</v-col>
-							<v-col cols="12" sm="auto" class="text-center text-sm-end">
-								<div class="text-white">
-									<div class="text-body-1 text-md-h6 font-weight-medium">{{ formatTime(new Date()) }}</div>
-									<div class="text-caption text-md-body-2 opacity-80">{{ formatDate(new Date()) }}</div>
-								</div>
-							</v-col>
-						</v-row>
-					</v-card-text>
-				</v-card>
-			</v-col>
-		</v-row>
-
 		<!-- Key Metrics Cards -->
 		<v-row class="mb-4 mb-md-6">
 			<v-col cols="6" sm="6" md="3" xl="3">
@@ -151,7 +115,7 @@
 							density="compact"
 						>
 							<template v-slot:item.timestamp="{ item }">
-								<span class="text-caption">{{ formatDateTime(item.timestamp) }}</span>
+								<span class="text-caption text-nowrap">{{ formatDateTime(item.timestamp) }}</span>
 							</template>
 							<template v-slot:item.amount="{ item }">
 								<v-chip
@@ -288,13 +252,6 @@ export default {
 	},
 	
 	data: () => ({
-		// User data
-		currentUser: {
-			name: 'David Davidson',
-			role: 'Administrative User',
-			lastLogin: new Date(Date.now() - 3600000) // 1 hour ago
-		},
-		
 		// Data
 		transactions: [],
 		chartData: [],
@@ -317,7 +274,7 @@ export default {
 		
 		// Table headers
 		transactionHeaders: [
-			{ title: 'Time', key: 'timestamp', width: '120px' },
+			{ title: 'Time', key: 'timestamp', width: '140px' },
 			{ title: 'Student', key: 'student_name', width: '140px' },
 			{ title: 'Location', key: 'location' },
 			{ title: 'Item', key: 'item' },
@@ -339,14 +296,6 @@ export default {
 	},
 
 	computed: {
-		userInitials() {
-			return this.currentUser.name
-				.split(' ')
-				.map(n => n[0])
-				.join('')
-				.toUpperCase()
-		},
-		
 		filteredTransactions() {
 			return this.transactions
 		},
@@ -567,22 +516,6 @@ export default {
 			return colors[type] || 'grey'
 		},
 		
-		formatTime(date) {
-			return new Intl.DateTimeFormat('en-US', {
-				hour: '2-digit',
-				minute: '2-digit',
-				hour12: true
-			}).format(date)
-		},
-		
-		formatDate(date) {
-			return new Intl.DateTimeFormat('en-US', {
-				weekday: 'long',
-				month: 'short',
-				day: 'numeric'
-			}).format(date)
-		},
-		
 		formatDateTime(date) {
 			return new Intl.DateTimeFormat('en-US', {
 				month: 'short',
@@ -628,11 +561,6 @@ export default {
 </script>
 
 <style scoped>
-.user-header-card {
-	background: linear-gradient(135deg, var(--theme-primary, #2E5984) 0%, var(--theme-secondary, #4A90E2) 100%) !important;
-	border-radius: 16px !important;
-}
-
 .metric-card {
 	border-radius: 12px !important;
 	transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -666,12 +594,13 @@ export default {
 }
 
 .custom-table {
-	background: white !important;
+	background: rgba(255, 255, 255, 0.9) !important;
 	border-radius: 8px !important;
 }
 
 .custom-table :deep(.v-data-table__wrapper) {
 	border-radius: 8px;
+	background: rgba(255, 255, 255, 0.9) !important;
 }
 
 .custom-table :deep(.v-data-table-header) {
