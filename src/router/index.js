@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Theme from '../views/Theme.vue'
-import LiquidGlass from '../views/LiquidGlass.vue'
 import ServiceDown from '../views/ServiceDown.vue'
 import NotAuthorized from '../views/NotAuthorized.vue'
 import { user, ui, api, app } from '@/stores'
@@ -27,12 +26,6 @@ const router = createRouter({
 			name: 'Theme',
 			component: Theme,
 			beforeEnter() { ui.pageTitle="BalanceU - Theme Selection" },
-		},
-		{
-			path: '/liquid-glass',
-			name: 'LiquidGlass',
-			component: LiquidGlass,
-			beforeEnter() { ui.pageTitle="BalanceU - Liquid Glass" },
 		},
 		{
 			path: '/ServiceDown',

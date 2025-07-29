@@ -356,7 +356,7 @@ export default {
 		},
 		
 		itemsPerPage() {
-			return this.$vuetify.display.mobile ? 10 : this.$vuetify.display.mdAndUp ? 25 : 15
+			return this.$vuetify.display.mobile ? 10 : 10
 		},
 		
 		buttonSize() {
@@ -863,6 +863,8 @@ export default {
 	-webkit-backdrop-filter: blur(10px);
 	border: 1px solid rgba(255, 255, 255, 0.2);
 	transition: all 0.3s ease;
+	display: inline-block;
+	vertical-align: middle;
 }
 
 .amount-text {
@@ -876,6 +878,11 @@ export default {
 		rgba(255, 255, 255, 0.15) 0%, 
 		rgba(255, 255, 255, 0.08) 100%);
 	border: 1px solid rgba(255, 255, 255, 0.25);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	min-width: 0;
+	max-width: 100px;
 }
 
 .tonal-balance-chip.flex-plan {
@@ -883,6 +890,11 @@ export default {
 		rgba(255, 255, 255, 0.12) 0%, 
 		rgba(255, 255, 255, 0.06) 100%);
 	border: 1px solid rgba(255, 255, 255, 0.2);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	min-width: 0;
+	max-width: 100px;
 }
 
 .tonal-balance-chip.meal-swipe {
@@ -890,6 +902,11 @@ export default {
 		rgba(255, 255, 255, 0.18) 0%, 
 		rgba(255, 255, 255, 0.1) 100%);
 	border: 1px solid rgba(255, 255, 255, 0.3);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	min-width: 0;
+	max-width: 100px;
 }
 
 /* Alerts Glass Panel */
