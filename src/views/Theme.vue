@@ -1,9 +1,9 @@
 <template>
     <v-container fluid class="pa-6">
         <!-- Header with Close Button -->
-        <v-row class="mb-6">
+        <v-row class="">
             <v-col cols="12" class="d-flex justify-space-between align-center">
-                <h2 class="text-h4 font-weight-light text-white">Choose a Theme</h2>
+                <div class="text-h5 font-weight-light text-white">Choose a Theme</div>
                 <v-btn
                     icon="mdi-close"
                     variant="text"

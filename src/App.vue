@@ -2,7 +2,7 @@
 	<v-app id="app" class="gradient-background"> 
 
 		<!--BRAND HEADER -->
-		<v-app-bar height="53" class="text-white elevation-0 text-h5" color="UARed">
+		<v-app-bar height="53" class="text-white elevation-0 text-h5 themed-brand-header" color="primary">
 				<v-row class="pl-9">					
 					FutureState
 				</v-row>
@@ -29,19 +29,19 @@
 		</v-app-bar>
 		
 		<!-- MAIN MENU -->
-		<v-navigation-drawer v-model="drawer" temporary width="375"  color="blue-grey-lighten-4">    
-			<v-list nav dense>	
+		<v-navigation-drawer v-model="drawer" temporary width="375" color="primary" class="themed-drawer">    
+			<v-list nav dense class="themed-list">	
 								
-				<v-list-item to="/" title="Home" prepend-icon="mdi-home"></v-list-item>
-				<v-list-item to="/About" title="About" prepend-icon="mdi-information"></v-list-item>
-				<v-list-item to="/theme" title="Theme Selection" prepend-icon="mdi-palette"></v-list-item>
+				<v-list-item to="/" title="Home" prepend-icon="mdi-home" class="themed-list-item"></v-list-item>
+				<v-list-item to="/About" title="About" prepend-icon="mdi-information" class="themed-list-item"></v-list-item>
+				<v-list-item to="/theme" title="Theme Selection" prepend-icon="mdi-palette" class="themed-list-item"></v-list-item>
 
-				<v-divider class="mt-4 mb-4"></v-divider>
+				<v-divider class="mt-4 mb-4 themed-divider"></v-divider>
 				<v-spacer></v-spacer>
 
 				<!-- LOGO -->
-				<v-list-item>
-					Future State Logo
+				<v-list-item class="themed-logo">
+					<div class="text-white font-weight-medium">Future State Logo</div>
 				</v-list-item>
 			</v-list>
 		</v-navigation-drawer>
@@ -102,6 +102,13 @@ methods: {
     min-height: 100vh;
 }
 
+/* Themed brand header */
+.themed-brand-header {
+    background: var(--theme-primary, #2E5984) !important;
+    border-bottom: 2px solid var(--theme-secondary, #4A90E2) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
 /* Make the application bar transparent so gradient shows through */
 .transparent-app-bar {
     background: rgba(255, 255, 255, 0.1) !important;
@@ -115,11 +122,55 @@ methods: {
     background: transparent !important;
 }
 
-/* Make navigation drawer slightly transparent */
-.v-navigation-drawer {
-    background: rgba(236, 239, 241, 0.95) !important;
+/* Make navigation drawer use theme colors */
+.v-navigation-drawer.themed-drawer {
+    background: var(--theme-primary, #2E5984) !important;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.themed-list {
+    background: transparent !important;
+}
+
+.themed-list-item {
+    color: white !important;
+    border-radius: 8px !important;
+    margin: 4px 8px !important;
+    transition: all 0.3s ease !important;
+}
+
+.themed-list-item:hover {
+    background: var(--theme-secondary, #4A90E2) !important;
+    transform: translateX(4px);
+}
+
+.themed-list-item.v-list-item--active {
+    background: var(--theme-accent, #87CEEB) !important;
+    color: var(--theme-primary, #2E5984) !important;
+    font-weight: bold;
+}
+
+.themed-list-item .v-icon {
+    color: white !important;
+}
+
+.themed-list-item.v-list-item--active .v-icon {
+    color: var(--theme-primary, #2E5984) !important;
+}
+
+.themed-divider {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.themed-logo {
+    color: white !important;
+    text-align: center !important;
+    padding: 16px !important;
+    background: var(--theme-secondary, #4A90E2) !important;
+    margin: 8px !important;
+    border-radius: 8px !important;
 }
 
 .uabutton {
