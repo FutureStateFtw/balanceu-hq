@@ -30,12 +30,16 @@ const vuetify = createVuetify({
           success: '#4CAF50',
           warning: '#FF9800',
           error: '#F44336',
-          info: '#2196F3'
+          info: '#2196F3',
+          // Tonal colors for better contrast
+          tonalLight: '#6B8CC4',
+          tonalMedium: '#4A6FA5', 
+          tonalDark: '#1E3A5F'
         },
       },
     },
     variations: {
-      colors: ['primary', 'secondary', 'accent', 'success', 'warning', 'error', 'info'],
+      colors: ['primary', 'secondary', 'accent', 'success', 'warning', 'error', 'info', 'tonalLight', 'tonalMedium', 'tonalDark'],
       lighten: 1,
       darken: 1
     }

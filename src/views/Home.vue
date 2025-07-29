@@ -22,7 +22,7 @@
 				</v-card>
 			</v-col>
 			<v-col cols="6" sm="6" md="3" xl="3">
-				<v-card color="warning" class="metric-card" elevation="3">
+				<v-card color="tonalMedium" class="metric-card" elevation="3">
 					<v-card-text class="pa-3 pa-md-4 text-center">
 						<v-icon icon="mdi-account-group" size="large" color="white" class="mb-2"></v-icon>
 						<div class="text-h5 text-md-h4 font-weight-bold text-white">{{ metrics.activeUsers.toLocaleString() }}</div>
@@ -119,9 +119,10 @@
 							</template>
 							<template v-slot:item.amount="{ item }">
 								<v-chip
-									color="primary"
+									color="tonalDark"
 									size="small"
 									variant="flat"
+									class="text-white font-weight-bold"
 								>
 									${{ Math.abs(item.amount).toFixed(2) }}
 								</v-chip>
@@ -130,14 +131,15 @@
 								<v-chip
 									:color="getBalanceTypeColor(item.balance_type)"
 									size="small"
-									variant="outlined"
+									variant="flat"
+									class="font-weight-medium balance-chip"
 								>
 									{{ item.balance_type }}
 								</v-chip>
 							</template>
 							<template v-slot:item.remaining_balance="{ item }">
-								<span class="font-weight-medium">
-									{{ item.balance_type === 'Meal Swipe' ? item.remaining_balance : `$${item.remaining_balance.toFixed(2)}` }}
+								<span class="font-weight-medium text-black">
+									${{ parseFloat(item.remaining_balance || 0).toFixed(2) }}
 								</span>
 							</template>
 						</v-data-table>
@@ -510,10 +512,10 @@ export default {
 		getBalanceTypeColor(type) {
 			const colors = {
 				'Dining Cash': 'success',
-				'Flex Plan': 'info',
+				'Flex Plan': 'info', 
 				'Meal Swipe': 'warning'
 			}
-			return colors[type] || 'grey'
+			return colors[type] || 'primary'
 		},
 		
 		formatDateTime(date) {
@@ -594,13 +596,14 @@ export default {
 }
 
 .custom-table {
-	background: rgba(255, 255, 255, 0.9) !important;
+	background: rgba(255, 255, 255, 0.15) !important;
 	border-radius: 8px !important;
+	border: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
 
 .custom-table :deep(.v-data-table__wrapper) {
 	border-radius: 8px;
-	background: rgba(255, 255, 255, 0.9) !important;
+	background: rgba(255, 255, 255, 0.15) !important;
 }
 
 .custom-table :deep(.v-data-table-header) {
@@ -613,12 +616,18 @@ export default {
 }
 
 .custom-table :deep(.v-data-table__td) {
-	border-bottom: 1px solid rgba(0,0,0,0.05) !important;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+	background: rgba(255, 255, 255, 0.05) !important;
+	color: black !important;
+}
+
+.custom-table :deep(.v-data-table__tr) {
+	background: rgba(255, 255, 255, 0.05) !important;
+	color: black !important;
 }
 
 .custom-table :deep(.v-data-table__tr:hover) {
-	background-color: var(--theme-accent, #87CEEB) !important;
-	background-color: rgba(135, 206, 235, 0.1) !important;
+	background-color: rgba(255, 255, 255, 0.25) !important;
 }
 
 .v-btn {
@@ -629,6 +638,11 @@ export default {
 
 .v-chip {
 	font-weight: 500 !important;
+}
+
+.balance-chip {
+	color: white !important;
+	text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
 }
 
 .v-card {

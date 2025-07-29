@@ -19,7 +19,11 @@ state: () => ({
                 success: '#4CAF50',
                 warning: '#FF9800',
                 error: '#F44336',
-                info: '#2196F3'
+                info: '#2196F3',
+                // Tonal colors for better contrast
+                tonalLight: '#6B8CC4',
+                tonalMedium: '#4A6FA5',
+                tonalDark: '#1E3A5F'
             }
         },
         sunset: {
@@ -33,7 +37,11 @@ state: () => ({
                 success: '#4CAF50',
                 warning: '#FFA726',
                 error: '#F44336',
-                info: '#FF8C00'
+                info: '#FF8C00',
+                // Tonal colors for better contrast
+                tonalLight: '#FF9A5A',
+                tonalMedium: '#E8743A',
+                tonalDark: '#A5491A'
             }
         },
         forest: {
@@ -47,7 +55,11 @@ state: () => ({
                 success: '#66BB6A',
                 warning: '#FF9800',
                 error: '#F44336',
-                info: '#4CAF50'
+                info: '#4CAF50',
+                // Tonal colors for better contrast
+                tonalLight: '#6FA570',
+                tonalMedium: '#3D6B46',
+                tonalDark: '#1F3B26'
             }
         },
         lavender: {
@@ -61,7 +73,11 @@ state: () => ({
                 success: '#4CAF50',
                 warning: '#FF9800',
                 error: '#F44336',
-                info: '#8A2BE2'
+                info: '#8A2BE2',
+                // Tonal colors for better contrast
+                tonalLight: '#B19CD9',
+                tonalMedium: '#8A70D0',
+                tonalDark: '#4A3C8F'
             }
         },
         rose: {
