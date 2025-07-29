@@ -1,7 +1,17 @@
 <template>
 	<v-container fluid class="pa-4 pa-md-6 liquid-glass-container">
 		
-
+		<!-- HEADER SECTION -->
+		<v-row class="mb-8">
+			<v-col cols="12" class="text-center">
+				<h1 class="display-1 font-weight-light text-white mb-4 glass-text">
+					Liquid Glass Dashboard
+				</h1>
+				<p class="text-h6 text-white opacity-80 mb-6">
+					Experience the future of campus card management with Apple-inspired glass morphism
+				</p>
+			</v-col>
+		</v-row>
 		
 		<!-- KEY METRICS CARDS -->
 		<v-row class="mb-4 mb-md-6">
@@ -157,12 +167,12 @@
 									<span class="glass-table-text">{{ formatDateTime(item.timestamp) }}</span>
 								</template>
 								<template v-slot:item.amount="{ item }">
-									<span class="glass-table-text amount-text">
+									<div class="glass-chip amount-chip">
 										${{ Math.abs(item.amount).toFixed(2) }}
-									</span>
+									</div>
 								</template>
 								<template v-slot:item.balance_type="{ item }">
-									<div class="glass-chip tonal-balance-chip" :class="getBalanceTypeClass(item.balance_type)">
+									<div class="glass-chip balance-type-chip" :class="getBalanceTypeClass(item.balance_type)">
 										{{ item.balance_type }}
 									</div>
 								</template>
@@ -595,12 +605,13 @@ export default {
 		
 		handleCardHover(event) {
 			const card = event.currentTarget
-			card.classList.add('card-hovered')
+			card.classList.add('hovered')
+			this.createSpecularEffect(event)
 		},
 
 		handleCardLeave(event) {
 			const card = event.currentTarget
-			card.classList.remove('card-hovered')
+			card.classList.remove('hovered')
 		},
 
 		handleActionHover(event) {
@@ -613,6 +624,19 @@ export default {
 			btn.classList.remove('action-hovered')
 		},
 
+		createSpecularEffect(event) {
+			const rect = event.currentTarget.getBoundingClientRect()
+			const x = ((event.clientX - rect.left) / rect.width) * 100
+			const y = ((event.clientY - rect.top) / rect.height) * 100
+			
+			const highlight = event.currentTarget.querySelector('.specular-highlight')
+			if (highlight) {
+				highlight.style.left = `${x}%`
+				highlight.style.top = `${y}%`
+				highlight.style.opacity = '0.8'
+			}
+		},
+		
 		formatDateTime(date) {
 			return new Intl.DateTimeFormat('en-US', {
 				month: 'short',
@@ -691,35 +715,6 @@ export default {
 	font-size: 0.9rem;
 	font-weight: 500;
 	margin: 0;
-}
-
-/* Card Hover Effects */
-.metric-glass-card.card-hovered {
-	transform: translateY(-8px) scale(1.03);
-	box-shadow: 
-		0 16px 40px rgba(135, 206, 235, 0.25),
-		0 8px 20px rgba(0, 0, 0, 0.3);
-	transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.metric-glass-card.card-hovered .glass-title {
-	text-shadow: 
-		0 0 30px rgba(255, 255, 255, 0.6),
-		0 2px 4px rgba(0, 0, 0, 0.3);
-	transform: scale(1.05);
-	transition: all 0.3s ease;
-}
-
-.metric-glass-card.card-hovered .glass-icon {
-	transform: translateY(-2px) scale(1.1);
-	filter: drop-shadow(0 0 15px rgba(135, 206, 235, 0.6));
-	transition: all 0.3s ease;
-}
-
-.metric-glass-card.card-hovered .glass-subtitle {
-	color: rgba(255, 255, 255, 0.95);
-	text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-	transition: all 0.3s ease;
 }
 
 /* Chart Glass Panels */
@@ -865,31 +860,28 @@ export default {
 	transition: all 0.3s ease;
 }
 
-.amount-text {
-	color: rgba(255, 255, 255, 0.95) !important;
-	font-weight: 600 !important;
-	font-size: 0.9rem !important;
+.amount-chip {
+	background: linear-gradient(135deg, 
+		var(--theme-success, #4CAF50) 0%, 
+		rgba(76, 175, 80, 0.8) 100%);
 }
 
-.tonal-balance-chip.dining-cash {
+.balance-type-chip.dining-cash {
 	background: linear-gradient(135deg, 
-		rgba(255, 255, 255, 0.15) 0%, 
-		rgba(255, 255, 255, 0.08) 100%);
-	border: 1px solid rgba(255, 255, 255, 0.25);
+		var(--theme-success, #4CAF50) 0%, 
+		rgba(76, 175, 80, 0.8) 100%);
 }
 
-.tonal-balance-chip.flex-plan {
+.balance-type-chip.flex-plan {
 	background: linear-gradient(135deg, 
-		rgba(255, 255, 255, 0.12) 0%, 
-		rgba(255, 255, 255, 0.06) 100%);
-	border: 1px solid rgba(255, 255, 255, 0.2);
+		var(--theme-info, #2196F3) 0%, 
+		rgba(33, 150, 243, 0.8) 100%);
 }
 
-.tonal-balance-chip.meal-swipe {
+.balance-type-chip.meal-swipe {
 	background: linear-gradient(135deg, 
-		rgba(255, 255, 255, 0.18) 0%, 
-		rgba(255, 255, 255, 0.1) 100%);
-	border: 1px solid rgba(255, 255, 255, 0.3);
+		var(--theme-warning, #FF9800) 0%, 
+		rgba(255, 152, 0, 0.8) 100%);
 }
 
 /* Alerts Glass Panel */

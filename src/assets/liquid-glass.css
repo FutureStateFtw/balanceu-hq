@@ -444,3 +444,334 @@
 	position: relative;
 	overflow: hidden;
 }
+
+/* Enhanced Glass Effects for Dashboard */
+
+/* Gradient Table Row Hover Animation */
+@keyframes tableRowGradientSweep {
+	0% {
+		background-position: -200% 0;
+	}
+	100% {
+		background-position: 200% 0;
+	}
+}
+
+/* Enhanced Specular Reflections */
+.enhanced-specular {
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(45deg, 
+		transparent 30%, 
+		rgba(255, 255, 255, 0.3) 50%, 
+		transparent 70%);
+	transform: skewX(-15deg);
+	transition: left 0.6s ease;
+}
+
+.liquid-glass-card:hover .enhanced-specular,
+.liquid-glass-panel:hover .enhanced-specular {
+	left: 100%;
+}
+
+/* Animated Border Gradients */
+@keyframes borderGradientRotate {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+/* Enhanced Glass Border Glow */
+.glass-border-glow {
+	position: absolute;
+	top: -2px;
+	left: -2px;
+	right: -2px;
+	bottom: -2px;
+	border-radius: inherit;
+	background: linear-gradient(45deg, 
+		var(--theme-primary, #2E5984), 
+		var(--theme-secondary, #4A90E2), 
+		var(--theme-accent, #87CEEB),
+		var(--theme-primary, #2E5984));
+	background-size: 400% 400%;
+	opacity: 0;
+	z-index: 1;
+	transition: opacity 0.3s ease;
+	animation: borderGradientRotate 3s ease infinite;
+}
+
+/* Pulsing Glow Effect */
+@keyframes pulseGlow {
+	0%, 100% {
+		box-shadow: 0 0 20px rgba(135, 206, 235, 0.3);
+		transform: scale(1);
+	}
+	50% {
+		box-shadow: 0 0 40px rgba(135, 206, 235, 0.6);
+		transform: scale(1.02);
+	}
+}
+
+/* Interactive Element Enhancements */
+.interactive-pulse {
+	animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Floating Particles Effect */
+.floating-particles {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	overflow: hidden;
+}
+
+.particle {
+	position: absolute;
+	width: 3px;
+	height: 3px;
+	background: rgba(255, 255, 255, 0.5);
+	border-radius: 50%;
+	animation: floatParticle 8s linear infinite;
+}
+
+@keyframes floatParticle {
+	0% {
+		transform: translateY(100vh) rotate(0deg);
+		opacity: 0;
+	}
+	10% {
+		opacity: 1;
+	}
+	90% {
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(-100px) rotate(360deg);
+		opacity: 0;
+	}
+}
+
+/* Enhanced Glass Morphism Effects */
+.ultra-glass {
+	background: linear-gradient(135deg, 
+		rgba(255, 255, 255, 0.25) 0%, 
+		rgba(255, 255, 255, 0.1) 25%,
+		rgba(255, 255, 255, 0.05) 50%,
+		rgba(255, 255, 255, 0.1) 75%,
+		rgba(255, 255, 255, 0.25) 100%);
+	backdrop-filter: blur(25px);
+	-webkit-backdrop-filter: blur(25px);
+	border: 2px solid transparent;
+	background-clip: padding-box;
+	position: relative;
+}
+
+.ultra-glass::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border-radius: inherit;
+	padding: 2px;
+	background: linear-gradient(45deg, 
+		rgba(255, 255, 255, 0.5),
+		rgba(255, 255, 255, 0.1),
+		rgba(255, 255, 255, 0.5));
+	mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+	mask-composite: exclude;
+	-webkit-mask-composite: destination-out;
+}
+
+/* Liquid Animation Effects */
+@keyframes liquidWave {
+	0% {
+		transform: translateX(-100%) translateY(0) rotate(0deg);
+	}
+	50% {
+		transform: translateX(0%) translateY(-10px) rotate(180deg);
+	}
+	100% {
+		transform: translateX(100%) translateY(0) rotate(360deg);
+	}
+}
+
+.liquid-wave {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 200%;
+	height: 60px;
+	background: linear-gradient(90deg, 
+		transparent,
+		rgba(135, 206, 235, 0.3),
+		transparent);
+	border-radius: 50%;
+	animation: liquidWave 4s ease-in-out infinite;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.liquid-glass-card:hover .liquid-wave,
+.liquid-glass-panel:hover .liquid-wave {
+	opacity: 1;
+}
+
+/* Advanced Blur Effects */
+.dynamic-blur {
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	transition: backdrop-filter 0.3s ease;
+}
+
+.dynamic-blur:hover {
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+}
+
+/* Color Shift Animations */
+@keyframes colorShift {
+	0% {
+		filter: hue-rotate(0deg);
+	}
+	25% {
+		filter: hue-rotate(90deg);
+	}
+	50% {
+		filter: hue-rotate(180deg);
+	}
+	75% {
+		filter: hue-rotate(270deg);
+	}
+	100% {
+		filter: hue-rotate(360deg);
+	}
+}
+
+.color-shift-hover:hover {
+	animation: colorShift 2s ease-in-out infinite;
+}
+
+/* 3D Transform Effects */
+.glass-3d-hover {
+	transition: transform 0.3s ease;
+	transform-style: preserve-3d;
+}
+
+.glass-3d-hover:hover {
+	transform: perspective(1000px) rotateX(5deg) rotateY(5deg) translateZ(20px);
+}
+
+/* Enhanced Status Indicators */
+.status-indicator {
+	padding: 4px 12px;
+	border-radius: 12px;
+	font-size: 0.75rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.status-indicator.secure {
+	background: rgba(76, 175, 80, 0.2);
+	color: #4CAF50;
+	border-color: rgba(76, 175, 80, 0.3);
+	box-shadow: 0 0 15px rgba(76, 175, 80, 0.3);
+}
+
+.status-indicator.optimal {
+	background: rgba(33, 150, 243, 0.2);
+	color: #2196F3;
+	border-color: rgba(33, 150, 243, 0.3);
+	box-shadow: 0 0 15px rgba(33, 150, 243, 0.3);
+}
+
+.status-indicator.critical {
+	background: rgba(244, 67, 54, 0.2);
+	color: #F44336;
+	border-color: rgba(244, 67, 54, 0.3);
+	box-shadow: 0 0 15px rgba(244, 67, 54, 0.3);
+}
+
+/* Enhanced Interaction Ripples */
+.interaction-ripple {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border-radius: 50%;
+	background: radial-gradient(circle, 
+		rgba(255, 255, 255, 0.4) 0%, 
+		rgba(255, 255, 255, 0.2) 30%,
+		transparent 70%);
+	pointer-events: none;
+	transition: all 0.6s ease-out;
+	transform: translate(-50%, -50%);
+}
+
+.liquid-glass-panel:active .interaction-ripple {
+	width: 400px;
+	height: 400px;
+}
+
+/* Shimmer Loading Effect */
+@keyframes shimmerLoading {
+	0% {
+		background-position: -468px 0;
+	}
+	100% {
+		background-position: 468px 0;
+	}
+}
+
+.shimmer-loading {
+	background: linear-gradient(90deg, 
+		rgba(255, 255, 255, 0.1) 25%, 
+		rgba(255, 255, 255, 0.3) 50%, 
+		rgba(255, 255, 255, 0.1) 75%);
+	background-size: 400px 100%;
+	animation: shimmerLoading 1.5s infinite;
+}
+
+/* Glass Reflection Effects */
+.glass-reflection {
+	position: relative;
+	overflow: hidden;
+}
+
+.glass-reflection::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 50%;
+	height: 100%;
+	background: linear-gradient(90deg, 
+		transparent, 
+		rgba(255, 255, 255, 0.4), 
+		transparent);
+	transform: skewX(-25deg);
+	transition: left 0.7s ease;
+}
+
+.glass-reflection:hover::after {
+	left: 150%;
+}
