@@ -744,6 +744,8 @@ export default {
 .glass-search-field {
 	background: rgba(255, 255, 255, 0.1) !important;
 	border-radius: 16px !important;
+	position: relative;
+	z-index: 10;
 }
 
 .glass-search-field :deep(.v-field) {
@@ -752,10 +754,25 @@ export default {
 	border: 1px solid rgba(255, 255, 255, 0.2) !important;
 	backdrop-filter: blur(10px);
 	-webkit-backdrop-filter: blur(10px);
+	position: relative;
+	z-index: 10;
 }
 
 .glass-search-field :deep(.v-field__input) {
 	color: white !important;
+	pointer-events: auto !important;
+}
+
+.glass-search-field :deep(.v-field__field) {
+	pointer-events: auto !important;
+}
+
+.glass-search-field :deep(.v-field__prepend-inner) {
+	pointer-events: auto !important;
+}
+
+.glass-search-field :deep(.v-field__append-inner) {
+	pointer-events: auto !important;
 }
 
 .glass-search-field :deep(.v-field__outline) {
