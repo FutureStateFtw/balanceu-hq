@@ -4,6 +4,8 @@ import About from '../views/About.vue'
 import Theme from '../views/Theme.vue'
 import ServiceDown from '../views/ServiceDown.vue'
 import NotAuthorized from '../views/NotAuthorized.vue'
+import User from '../views/User.vue'
+import Login from '../views/Login.vue'
 import { user, ui, api, app } from '@/stores'
 
 const router = createRouter({
@@ -31,6 +33,18 @@ const router = createRouter({
 			path: '/ServiceDown',
 			name: 'ServiceDown',
 			component: ServiceDown,
+		},
+		{
+			path: '/user',
+			name: 'User',
+			component: User,
+			beforeEnter() { ui.pageTitle="BalanceU" },
+		},
+		{
+			path: '/login',
+			name: 'Login',
+			component: Login,
+			beforeEnter() { ui.pageTitle="BalanceU - Login" },
 		},
 		{
 			path: '/NotAuthorized',

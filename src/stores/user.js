@@ -13,6 +13,16 @@ export const useUser = defineStore('userStore', {
 state: () => ({
 	isUser: 			false,
 	isAdmin: 			false,
+    // CURRENT AUTHENTICATED USER (null until login)
+    currentUser: 		null,
+
+    // MOCK USER DIRECTORY (REMOVE WHEN REAL AUTH WIRED)
+    users: [
+        { userId: 101, displayName: 'Joe',    imageUrl: null, username: 'joe',     password: 'password' },
+        { userId: 102, displayName: 'Chris', imageUrl: null, username: 'chris',   password: 'password' },
+        { userId: 103, displayName: 'Erika',  imageUrl: null, username: 'erika',   password: 'password' },
+        { userId: 104, displayName: 'Drennen', imageUrl: null, username: 'drennen', password: 'password' },
+    ],
 }),
 
 getters: {
@@ -24,6 +34,22 @@ getters: {
 },
 
 actions: {
+    // ATTEMPT LOGIN WITH USERNAME/PASSWORD
+    login(username, password) {
+        const found = this.users.find(u => u.username.toLowerCase() === String(username || '').toLowerCase() && u.password === password)
+        if (found) {
+            this.currentUser = { ...found } // shallow clone for safety
+            this.isUser = true
+            return true
+        }
+        return false
+    },
+
+    // LOGOUT USER
+    logout() {
+        this.currentUser = null
+        this.isUser = false
+    },
 	
 	
 },
