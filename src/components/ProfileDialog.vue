@@ -106,8 +106,8 @@ export default {
 /* Position dialog in top right */
 :global(.profile-dialog-positioned) {
     position: fixed !important;
-    top: 150px !important;
-    right: 20px !important;
+    top: 140px !important;
+    right: 15px !important;
     left: auto !important;
     transform: none !important;
     margin: 0 !important;
@@ -115,15 +115,44 @@ export default {
 
 .profile-dialog-wrapper {
     position: relative;
-    background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%);
-    backdrop-filter: blur(38px);
-    -webkit-backdrop-filter: blur(38px);
-    border: 1px solid rgba(255,255,255,0.35);
-    border-radius: 14px;
-    box-shadow: 0 24px 54px -18px rgba(0,0,0,0.55), 0 10px 28px rgba(0,0,0,0.35);
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.15) 0%, 
+        rgba(255, 255, 255, 0.05) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .profile-dialog-wrapper > *:not(.glass-border-glow) { position: relative; z-index: 2; }
-.glass-border-glow { position: absolute; inset:0; pointer-events:none; z-index:0; }
+.glass-border-glow { 
+    position: absolute; 
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 26px;
+    background: linear-gradient(45deg, 
+        var(--theme-primary, #2E5984), 
+        var(--theme-secondary, #4A90E2), 
+        var(--theme-accent, #87CEEB),
+        var(--theme-primary, #2E5984));
+    background-size: 300% 300%;
+    opacity: 0.3;
+    z-index: 0;
+    pointer-events: none;
+    animation: borderGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes borderGlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
 .transparent-list { 
     background: transparent !important; 
     overflow: hidden !important;

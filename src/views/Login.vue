@@ -53,6 +53,7 @@
     import { ref, computed } from 'vue'
     import { user, ui } from '@/stores'
     import { useRouter } from 'vue-router'
+    import logoImage from '@/assets/BalanceU_White_Login.webp'
 
     const router = useRouter()
     const username = ref('')
@@ -61,7 +62,7 @@
     const error = ref('')
     const formRef = ref(null)
 
-    const logoSrc = '/src/assets/BalanceU_White_Login.webp'
+    const logoSrc = logoImage
     const hasLogo = true
 
     function attemptLogin() {

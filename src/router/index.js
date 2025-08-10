@@ -58,7 +58,10 @@ const router = createRouter({
 // EXECUTED BEFORE ROUTING
 router.beforeEach(async (to, from) => {
 
-	// Authentication To-Do	
+	// Authentication guard - redirect to login if no current user
+	if (!user.currentUser && to.path !== '/login') {
+		return '/login'
+	}
 
 	// Fetch any data that is needed before going on (superUser, etc)
 	await app.initialize() 
