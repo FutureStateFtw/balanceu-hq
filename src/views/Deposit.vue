@@ -9,27 +9,8 @@
         class="std-fullscreen-dialog"
     >
         <div class="gradient-background std-dialog-content">
-            <!-- CUSTOM APP BAR -->
-            <div class="std-subpage-header">
-                <v-container fluid class="pa-0">
-                    <v-row no-gutters align="center" class="pa-4">
-                        <v-col cols="auto">
-                            <v-btn
-                                @click="goBack"
-                                icon="mdi-arrow-left"
-                                variant="text"
-                                class="std-back-button me-3"
-                                size="large"
-                            />
-                        </v-col>
-                        <v-col>
-                            <div class="text-h5 font-weight-medium std-text-glass">
-                                Deposit Funds
-                            </div>
-                        </v-col>
-                    </v-row>
-                </v-container>
-            </div>
+            <!-- STANDARDIZED SUBPAGE HEADER -->
+            <SubpageHeader :backRoute="'/user'" />
 
             <!-- DIALOG BODY -->
             <div class="std-dialog-body">
@@ -148,6 +129,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { ui } from '@/stores'
 import { useRouter } from 'vue-router'
+import SubpageHeader from '@/components/common/SubpageHeader.vue'
 
 const router = useRouter()
 const dialogVisible = ref(false)
@@ -161,14 +143,6 @@ onMounted(() => {
 })
 
 // Methods
-function goBack() {
-    dialogVisible.value = false
-    // Small delay to allow dialog transition
-    setTimeout(() => {
-        router.push('/user')
-    }, 250)
-}
-
 function selectDepositOption(type) {
     // Placeholder for future functionality
     console.log(`Selected deposit option: ${type}`)
@@ -177,7 +151,11 @@ function selectDepositOption(type) {
 
 // Handle browser back button
 function handlePopState() {
-    goBack()
+    dialogVisible.value = false
+    // Small delay to allow dialog transition
+    setTimeout(() => {
+        router.push('/user')
+    }, 250)
 }
 
 onMounted(() => {

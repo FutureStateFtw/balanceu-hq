@@ -1,7 +1,7 @@
 <template>
     <v-container fluid class="fill-height d-flex align-center justify-center login-gradient">
         <!-- LOGIN CARD -->
-        <div class="login-card">
+        <div class="std-glass-card login-card">
             <!-- LOGO AREA -->
             <div class="text-center mb-6">
                 <v-img :src="logoSrc" max-width="220" class="mx-auto mb-4" v-if="hasLogo" />
@@ -85,25 +85,44 @@ export default { name: 'LoginView' }
 </script>
 
 <style scoped>
-.login-gradient { min-height: 100vh; }
+/* LOGIN-SPECIFIC LAYOUT */
+.login-gradient { 
+    min-height: 100vh; 
+}
+
 .login-card {
     width: 520px;
     max-width: 90vw;
     padding: 54px 52px 58px 52px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%);
-    backdrop-filter: blur(26px);
-    -webkit-backdrop-filter: blur(26px);
-    border: 1px solid rgba(255,255,255,0.35);
-    border-radius: 18px;
-    box-shadow: 0 32px 70px -20px rgba(0,0,0,0.45), 0 12px 32px rgba(0,0,0,0.25);
-    position: relative;
 }
-.login-input :deep(.v-field) { box-shadow: none !important; }
-.login-input :deep(input) { font-size: .85rem; }
-.login-btn { backdrop-filter: blur(8px); }
-.accent { color: #FFC107; }
-.error-text { letter-spacing: .5px; }
+
+/* LOGIN-SPECIFIC INPUT STYLING */
+.login-input :deep(.v-field) { 
+    box-shadow: none !important; 
+}
+
+.login-input :deep(input) { 
+    font-size: .85rem; 
+}
+
+.login-btn { 
+    backdrop-filter: blur(8px); 
+}
+
+/* LOGIN-SPECIFIC TEXT STYLES */
+.accent { 
+    color: #FFC107; 
+}
+
+.error-text { 
+    letter-spacing: .5px; 
+}
+
+/* RESPONSIVE ADJUSTMENTS FOR LOGIN */
 @media (max-width: 600px) {
-  .login-card { padding: 40px 32px 46px 32px; width: 420px; }
+    .login-card { 
+        padding: 40px 32px 46px 32px; 
+        width: 420px; 
+    }
 }
 </style>
