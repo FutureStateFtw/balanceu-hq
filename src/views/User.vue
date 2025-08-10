@@ -4,7 +4,11 @@
         <!-- OVERVIEW BALANCES -->
         <v-row class="mb-4">
             <v-col v-for="bal in balances" :key="bal.key" cols="12" sm="4" class="d-flex">
-                <div class="std-glass-card balance-card flex-grow-1" @mouseenter="hoverCard($event)" @mouseleave="leaveCard($event)">
+                <div class="std-glass-card balance-card flex-grow-1" 
+                     @mouseenter="hoverCard($event)" 
+                     @mouseleave="leaveCard($event)"
+                     @click="bal.key === 'diningDollars' || bal.key === 'debitDollars' ? toggleBalanceDropdown(bal.key) : null"
+                     :class="{ 'balance-card-clickable': bal.key === 'diningDollars' || bal.key === 'debitDollars' }">
                     <div class="card-inner pa-4">
                         <div class="d-flex align-center justify-space-between mb-1">
                             <div class="d-flex align-center">
@@ -20,6 +24,31 @@
                             <template v-else>${{ bal.amount.toLocaleString(undefined,{minimumFractionDigits:2, maximumFractionDigits:2}) }}</template>
                         </div>
                         <div v-if="bal.availableThisWeek" class="text-caption std-text-glass-muted d-flex justify-end">Available This Week&nbsp;<strong>{{ bal.availableThisWeek }}</strong></div>
+                        
+                        <!-- BALANCE TRANSACTIONS DROPDOWN -->
+                        <v-expand-transition>
+                            <div v-show="balanceDropdowns[bal.key]" class="mt-3">
+                                <v-divider class="mb-2 std-glass-divider"></v-divider>
+                                <div class="text-caption std-text-glass-subtitle mb-2">Recent {{ bal.label }} Activity</div>
+                                <div v-if="getBalanceTransactions(bal.key).length === 0" class="text-caption std-text-glass-muted py-2 text-center">
+                                    No recent {{ bal.label.toLowerCase() }} transactions
+                                </div>
+                                <div v-for="t in getBalanceTransactions(bal.key)" :key="t.id" class="balance-transaction-row">
+                                    <div class="d-flex justify-space-between align-center py-2">
+                                        <div class="flex-grow-1">
+                                            <div class="text-caption std-text-glass-muted">{{ t.merchant }}</div>
+                                            <div class="text-caption std-text-glass-muted" style="font-size: 0.7rem; opacity: 0.7;">
+                                                {{ formatTransactionDate(t.date) }}
+                                            </div>
+                                        </div>
+                                        <div class="text-caption" :class="t.amount > 0 ? 'text-green-lighten-2' : 'std-text-glass'">
+                                            {{ formatCurrency(t.amount) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </v-expand-transition>
+                        
                         <div class="std-glass-border-glow"></div>
                     </div>
                 </div>
@@ -95,8 +124,8 @@
 </template>
 
 <script setup>
-    import { theme, ui } from '@/stores'
-    import { getUserBalances, getRecentTransactions, getQuickActions, getBottomNavActions, formatTransactionDate } from '@/stores/mockDataUser.js'
+    import { theme, ui, user } from '@/stores'
+    import { getUserBalances, getRecentTransactions, getTransactionsByBalanceType, getQuickActions, getBottomNavActions, formatTransactionDate } from '@/stores/mockDataUser.js'
 </script>
 
 <script>
@@ -113,6 +142,10 @@ export default {
         // UI State
         bottomNavOpen: false,
         transactionsOpen: true,
+        balanceDropdowns: {
+            diningDollars: false,
+            debitDollars: false
+        },
         dialog: false,
         dialogTitle: '',
         dialogMessage: '',
@@ -124,12 +157,29 @@ export default {
     },
 
     methods: {
-        // Load mock arrays
+        // Load per-user data
         loadData() {
-            this.balances = getUserBalances()
-            this.recent = getRecentTransactions(5)
+            const userId = user.currentUser?.userId
+            if (!userId) return
+            
+            this.balances = getUserBalances(userId)
+            this.recent = getRecentTransactions(userId, 5)
             this.quick = getQuickActions()
             this.bottomNav = getBottomNavActions()
+        },
+
+        // Get transactions for specific balance type
+        getBalanceTransactions(balanceType) {
+            const userId = user.currentUser?.userId
+            if (!userId) return []
+            
+            // Use the new filtering function from mockDataUser
+            return getTransactionsByBalanceType(userId, balanceType, 5)
+        },
+
+        // Toggle balance dropdown
+        toggleBalanceDropdown(balanceType) {
+            this.balanceDropdowns[balanceType] = !this.balanceDropdowns[balanceType]
         },
 
         // Format currency amount
@@ -212,8 +262,24 @@ export default {
     z-index: 2; 
 }
 
+.balance-card-clickable {
+    cursor: pointer;
+}
+
+.balance-card-clickable:hover {
+    transform: translateY(-2px) scale(1.01);
+}
+
 .balance-icon { 
     color: rgba(255, 255, 255, 0.9) !important; 
+}
+
+.balance-transaction-row {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.balance-transaction-row:last-child {
+    border-bottom: none;
 }
 
 .quick-action-card {
@@ -261,6 +327,15 @@ export default {
 
 .amount.is-meal { 
     color: rgba(255, 255, 255, 0.9) !important; 
+}
+
+.balance-transaction-row {
+    border-radius: 6px;
+    transition: all 0.25s;
+}
+
+.balance-transaction-row:hover {
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .bottom-nav-wrapper {
