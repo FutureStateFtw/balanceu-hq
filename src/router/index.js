@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
 import About from '../views/About.vue'
+import Admin from '../views/Admin.vue'
 import Theme from '../views/Theme.vue'
 import ServiceDown from '../views/ServiceDown.vue'
 import NotAuthorized from '../views/NotAuthorized.vue'
@@ -12,9 +12,9 @@ const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),  // Use the base URL from vite.config.js for deployment (if set)
 	routes: [
 		{
-			path: '/',
-			name: 'Home',
-			component: Home,
+			path: '/admin',
+			name: 'Admin',
+			component: Admin,
 			beforeEnter() { ui.pageTitle="BalanceU " },
 		},
 		{

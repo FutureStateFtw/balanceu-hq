@@ -75,7 +75,7 @@
                 ui.snackText = 'Welcome ' + user.currentUser.displayName
                 ui.snackColor = 'success'
                 ui.snack = true
-                router.push('/')
+                router.push('/user')
             } else {
                 error.value = 'Invalid credentials'
             }

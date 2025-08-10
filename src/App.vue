@@ -2,20 +2,25 @@
 	<v-app id="app" class="gradient-background">
 
 		<!-- BRAND HEADER -->
-		<v-app-bar v-if="!isLoginRoute" height="53" class="text-white elevation-0 text-h5 themed-brand-header" color="primary">
+		<v-app-bar v-if="!isLoginRoute" height="53" class="text-white elevation-0 text-h5 themed-brand-header" color="transparent">
 			<v-row class="pl-9">FutureState</v-row>
 		</v-app-bar>
 
 		<!-- APPLICATION BAR -->
 		<v-app-bar v-if="!isLoginRoute" class="pr-lg-8 elevation-0 transparent-app-bar text-white" :height="isPhone ? 70 : 100" :class="isPhone ? 'pl-5' : ''" color="transparent">
 			<v-row style="width:100%;" class="justify-center align-center font-weight-light text-white" >
-				<v-col cols="auto">
+				
+				<!-- HAMBURGER -->
+				<v-col cols="auto" class="ml-3">
 					<v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 				</v-col>
+				
+				
 				<v-col class="text-white" align="start">
 					<div class="text-h4 font-weight-bold text-white mb-1">Balance<span class="accent">U</span></div>
 				</v-col>
 				<v-spacer></v-spacer>
+
 				<!-- USER PROFILE -->
 				<v-col cols="auto">
 					<v-row align="center" no-gutters>
@@ -35,17 +40,26 @@
 		</v-app-bar>
 
 		<!-- MAIN MENU -->
-		<v-navigation-drawer v-if="!isLoginRoute" v-model="drawer" temporary width="375" color="primary" class="themed-drawer">
+		<v-navigation-drawer v-if="!isLoginRoute" v-model="drawer" temporary width="375" class="liquid-glass-drawer">
 			<v-list nav dense class="themed-list">
-				<v-list-item to="/" title="Home" prepend-icon="mdi-home" class="themed-list-item" />
 				<v-list-item to="/user" title="User" prepend-icon="mdi-account" class="themed-list-item" />
+				<v-list-item to="/admin" title="Admin" prepend-icon="mdi-shield-account" class="themed-list-item" />
 				<v-list-item to="/About" title="About" prepend-icon="mdi-information" class="themed-list-item" />
 				<v-list-item to="/theme" title="Theme Selection" prepend-icon="mdi-palette" class="themed-list-item" />
 				<v-divider class="mt-4 mb-4 themed-divider" />
 				<v-spacer />
+				
 				<!-- LOGO -->
-				<v-list-item class="themed-logo">
-					<div class="text-white font-weight-medium">Future State Logo</div>
+				<v-list-item>
+					<v-img :src="logoImage" alt="BalanceU Logo" max-width="150" contain></v-img>
+				</v-list-item>
+				
+				<!-- LOGOUT BUTTON -->
+				<v-list-item class="logout-button mt-8" @click="logout">
+					<template v-slot:prepend>
+						<v-icon>mdi-logout</v-icon>
+					</template>
+					<v-list-item-title>Logout</v-list-item-title>
 				</v-list-item>
 			</v-list>
 		</v-navigation-drawer>
@@ -67,6 +81,7 @@
 import SnackMessageBar from './components/SnackMessageBar.vue'
 import ConfirmDialog from './components/common/ConfirmDialog.vue'
 import ProfileDialog from './components/ProfileDialog.vue'
+import logoImage from '@/assets/BalanceU_White_Login.webp'
 import { ui, user, theme } from '@/stores'
 
 export default {
@@ -75,6 +90,7 @@ name: 'App',
 data: () => ({
 	drawer: false,
 	profileDialog: false,
+	logoImage
 }),
 
 computed: {
@@ -98,7 +114,14 @@ computed: {
 	}
 },
 
-methods: { },
+methods: { 
+	// Logout method
+	logout() {
+		user.currentUser = null
+		this.drawer = false
+		this.$router.push('/login')
+	}
+},
 
 components: { SnackMessageBar, ConfirmDialog, ProfileDialog }
 }
@@ -125,8 +148,8 @@ onMounted(() => { theme.initializeTheme() })
 
 /* Themed brand header */
 .themed-brand-header {
-    background: var(--theme-primary, #2E5984) !important;
-    border-bottom: 2px solid var(--theme-secondary, #4A90E2) !important;
+    border-bottom: 2px solid var(--theme-secondary, #ffffff) !important;
+	border-color: rgba(255, 255, 255, 0.1) !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
 }
 
@@ -180,12 +203,27 @@ onMounted(() => { theme.initializeTheme() })
     background: transparent !important;
 }
 
-/* Make navigation drawer use theme colors */
-.v-navigation-drawer.themed-drawer {
-    background: var(--theme-primary, #2E5984) !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+/* Make navigation drawer use liquid glass styling */
+.v-navigation-drawer.liquid-glass-drawer {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border-radius: 0 16px 16px 0;
+    overflow: hidden;
+}
+
+.liquid-glass-drawer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    pointer-events: none;
+    border-radius: 0 16px 16px 0;
 }
 
 .themed-list {
@@ -222,14 +260,25 @@ onMounted(() => { theme.initializeTheme() })
     border-color: rgba(255, 255, 255, 0.3) !important;
 }
 
-.themed-logo {
+.logout-button {
     color: white !important;
-    text-align: center !important;
-    padding: 16px !important;
-    background: var(--theme-secondary, #4A90E2) !important;
-    margin: 8px !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
     border-radius: 8px !important;
+    margin: 8px 16px !important;
+    padding: 8px 16px !important;
+    transition: all 0.3s ease !important;
 }
+
+.logout-button:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.logout-button .v-icon {
+    color: white !important;
+}
+
+
 
 .uabutton {
     border: 2px solid !important;
