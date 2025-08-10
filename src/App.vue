@@ -7,11 +7,11 @@
 		</v-app-bar> -->
 
 		<!-- APPLICATION BAR -->
-		<v-app-bar v-if="!isLoginRoute" class="pr-lg-8 elevation-0 text-white" :height="isPhone ? 70 : 100" :class="isPhone ? 'pl-5' : ''" color="primary">
+		<v-app-bar v-if="!isLoginRoute" class="pr-lg-8 pl-2 pl-md-6 elevation-0 text-white" :height="isPhone ? 70 : 100" color="primary">
 			<v-row style="width:100%;" class="align-center font-weight-light text-white" >
 				
 				<!-- HAMBURGER -->
-				<v-col cols="auto" class="ml-n3">
+				<v-col cols="auto" class="">
 					<v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 				</v-col>
 				
@@ -49,10 +49,6 @@
 				<v-divider class="mt-4 mb-4 std-glass-divider" />
 				<v-spacer />
 				
-				<!-- LOGO -->
-				<v-list-item>
-					<v-img :src="logoImage" alt="BalanceU Logo" max-width="150" contain></v-img>
-				</v-list-item>
 				
 				<!-- LOGOUT BUTTON -->
 				<v-list-item class="std-glass-button mt-8 mx-4" @click="logout">
@@ -129,10 +125,9 @@ components: { SnackMessageBar, ConfirmDialog, ProfileDialog }
 
 <script setup>
 import { onMounted } from 'vue'
-import { theme, user } from '@/stores'
+import { theme } from '@/stores'
 onMounted(() => { 
     theme.initializeTheme()
-    user.initializeAuth()
 })
 </script>
 

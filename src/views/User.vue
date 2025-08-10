@@ -78,9 +78,14 @@
                                             <div class="text-caption text-white-muted">{{ formatTransactionDate(item.date) }}</div>
                                         </div>
                                         <div class="amount" :class="{'is-meal': item.amountType==='meal'}">
-                                            <span v-if="item.amountType==='meal'">{{ Math.abs(item.amount) }} Meal{{ Math.abs(item.amount) !== 1 ? 's' : '' }}</span>
-                                            <span v-else>{{ formatCurrency(item.amount) }}</span>
-                                            <v-icon icon="mdi-chevron-right" size="16" class="ml-2 text-white-muted"></v-icon>
+                                            <div class="d-flex flex-column align-end">
+                                                <div class="d-flex align-center">
+                                                    <span v-if="item.amountType==='meal'">{{ Math.abs(item.amount) }} Meal{{ Math.abs(item.amount) !== 1 ? 's' : '' }}</span>
+                                                    <span v-else>{{ formatCurrency(item.amount) }}</span>
+                                                    <v-icon icon="mdi-chevron-right" size="16" class="ml-2 text-white-muted"></v-icon>
+                                                </div>
+                                                <div class="text-caption text-white-muted" style="font-size: 0.7rem;">{{ getAccountDisplayName(item.balanceType) }}</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </template>
@@ -201,6 +206,16 @@ export default {
 
         formatTransactionDate(date) {
             return formatTransactionDate(date)
+        },
+
+        // Get user-friendly account display name
+        getAccountDisplayName(balanceType) {
+            const accountNames = {
+                'diningDollars': 'Dining Dollars',
+                'debitDollars': 'Debit Dollars',
+                'mealTaps': 'Meal Taps'
+            }
+            return accountNames[balanceType] || balanceType
         },
 
         // Hover effects

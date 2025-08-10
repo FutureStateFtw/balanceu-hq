@@ -64,11 +64,6 @@ const router = createRouter({
 
 // EXECUTED BEFORE ROUTING
 router.beforeEach(async (to, from) => {
-	// Initialize user auth if not already done (handles HMR case)
-	if (!user.currentUser) {
-		user.initializeAuth()
-	}
-
 	// Authentication guard - redirect to login if no current user
 	if (!user.currentUser && to.path !== '/login') {
 		return '/login'
