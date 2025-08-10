@@ -73,7 +73,7 @@
                     </div>
                 </div>
             </transition>
-            <v-btn class="nav-toggle-btn" color="white" variant="flat" size="small" @click="bottomNavOpen = !bottomNavOpen">{{ bottomNavOpen ? 'Close' : 'Navigate' }}</v-btn>
+            <v-btn class="nav-toggle-btn" color="white" variant="flat" size="large" @click="bottomNavOpen = !bottomNavOpen">{{ bottomNavOpen ? 'Close' : 'Navigate' }}</v-btn>
         </div>
 
         <!-- SIMPLE ACTION DIALOG -->
@@ -282,10 +282,35 @@ export default {
     transform: translateX(4px);
 }
 .nav-toggle-btn {
+    position: relative;
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 24px;
     min-width: 120px;
-    font-weight: 500;
-    color: #0C234B !important;
+    font-weight: 300;
+    color: white !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.nav-toggle-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    pointer-events: none;
+    border-radius: 24px;
+}
+
+.nav-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Fade-slide animation */

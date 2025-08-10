@@ -72,9 +72,6 @@
             const success = user.login(username.value.trim(), password.value)
             loading.value = false
             if (success) {
-                ui.snackText = 'Welcome ' + user.currentUser.displayName
-                ui.snackColor = 'success'
-                ui.snack = true
                 router.push('/user')
             } else {
                 error.value = 'Invalid credentials'
