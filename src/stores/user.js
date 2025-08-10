@@ -21,6 +21,7 @@ function resolveAvatar(username) {
     return match ? match[1] : null
 }
 export const API_JWT_AUTH = 'balanceUAdmin_jwt_auth'
+export const USER_SESSION_KEY = 'balanceUAdmin_user_session'
 
 export const useUser = defineStore('userStore', {
 state: () => ({
@@ -35,6 +36,10 @@ state: () => ({
         { userId: 102, studentId: '123451', displayName: 'Chris',   username: 'chris',   password: 'FutureStatePassword' },
         { userId: 103, studentId: '123452', displayName: 'Erika',   username: 'erika',   password: 'FutureStatePassword' },
         { userId: 104, studentId: '123456', displayName: 'Drennen', username: 'drennen', password: 'FutureStatePassword' },
+        { userId: 104, studentId: '123457', displayName: 'Jon', username: 'jon', password: 'FutureStatePassword' },
+        { userId: 104, studentId: '123458', displayName: 'Jake', username: 'jake', password: 'FutureStatePassword' },
+        { userId: 104, studentId: '123459', displayName: 'Colin', username: 'colin', password: 'FutureStatePassword' },
+        { userId: 104, studentId: '123460', displayName: 'Olivia', username: 'olivia', password: 'FutureStatePassword' },
     ],
 }),
 
@@ -52,6 +57,30 @@ getters: {
 },
 
 actions: {
+    // INITIALIZE STORE (RESTORE SESSION FROM localStorage)
+    initializeAuth() {
+        try {
+            const savedUserId = localStorage.getItem(USER_SESSION_KEY)
+            if (savedUserId) {
+                // Find user by ID in our user directory
+                const found = this.users.find(u => u.userId === parseInt(savedUserId))
+                if (found) {
+                    // Restore the user session with fresh avatar
+                    const imagePath = resolveAvatar(found.username)
+                    this.currentUser = { ...found, avatar: imagePath }
+                    this.isUser = true
+                    console.log('User session restored:', this.currentUser.displayName)
+                } else {
+                    // User no longer exists, clear invalid session
+                    localStorage.removeItem(USER_SESSION_KEY)
+                }
+            }
+        } catch (error) {
+            console.warn('Failed to restore user session:', error)
+            localStorage.removeItem(USER_SESSION_KEY)
+        }
+    },
+
     // ATTEMPT LOGIN WITH USERNAME/PASSWORD
     login(username, password) {
         const found = this.users.find(u => u.username.toLowerCase() === String(username || '').toLowerCase())
@@ -60,6 +89,10 @@ actions: {
             const imagePath = resolveAvatar(found.username)
             this.currentUser = { ...found, avatar: imagePath }
             this.isUser = true
+            
+            // Persist only the user ID to localStorage
+            localStorage.setItem(USER_SESSION_KEY, found.userId.toString())
+            
             return true
         }
         return false
@@ -69,6 +102,8 @@ actions: {
     logout() {
         this.currentUser = null
         this.isUser = false
+        // Clear persisted session
+        localStorage.removeItem(USER_SESSION_KEY)
     },
 	
 	

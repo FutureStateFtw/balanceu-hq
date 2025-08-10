@@ -129,8 +129,11 @@ components: { SnackMessageBar, ConfirmDialog, ProfileDialog }
 
 <script setup>
 import { onMounted } from 'vue'
-import { theme } from '@/stores'
-onMounted(() => { theme.initializeTheme() })
+import { theme, user } from '@/stores'
+onMounted(() => { 
+    theme.initializeTheme()
+    user.initializeAuth()
+})
 </script>
 
 <!-- SOME APPLICATION WIDE STYLES -->

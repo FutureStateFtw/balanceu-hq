@@ -9,7 +9,7 @@
                      @mouseleave="leaveCard($event)"
                      @click="bal.key === 'diningDollars' || bal.key === 'debitDollars' || bal.key === 'mealTaps' ? toggleBalanceDropdown(bal.key) : null"
                      :class="{ 'balance-card-clickable': bal.key === 'diningDollars' || bal.key === 'debitDollars' || bal.key === 'mealTaps' }">
-                    <div class="card-inner pa-4">
+                    <div class="card-inner">
                         <div class="d-flex align-center justify-space-between mb-1">
                             <div class="d-flex align-center">
                                 <v-icon :icon="bal.icon" class="mr-2 balance-icon" size="26"></v-icon>
@@ -59,7 +59,7 @@
         <v-row class="mb-4">
             <v-col cols="12">
                 <div class="std-glass-panel">
-                    <div class="px-4 py-6 d-flex align-center justify-space-between" @click="transactionsOpen = !transactionsOpen" style="cursor: pointer;">
+                    <div class="px-5 py-6 d-flex align-center justify-space-between" @click="transactionsOpen = !transactionsOpen" style="cursor: pointer;">
                         <div class="text-subtitle-2 font-weight-medium std-text-glass-subtitle">All Transactions</div>
                         <v-icon :icon="transactionsOpen ? 'mdi-chevron-up' : 'mdi-chevron-down'" size="18" class="std-text-glass-muted"></v-icon>
                     </div>
@@ -428,7 +428,7 @@ export default {
 
 @media (max-width: 600px) {
     .balance-card .card-inner {
-        padding: 12px 16px !important;
+        padding: 18px 18px !important;
     }
     
     .quick-action-card {
