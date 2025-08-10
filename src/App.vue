@@ -24,8 +24,8 @@
 							<span class="user-name">{{ userDisplayName }}</span>
 						</v-col>
 						<v-col cols="auto" class="mr-4">
-							<v-avatar size="40" class="elevation-2 user-profile-card">
-								<v-img v-if="user.currentUser?.imageUrl" :src="user.currentUser.imageUrl" cover></v-img>
+							<v-avatar size="40" class="elevation-2 user-profile-card" @click="profileDialog=true">
+								<v-img v-if="user.avatarUrl || user.currentUser?.avatar" :src="user.avatarUrl || user.currentUser?.avatar" cover></v-img>
 								<div v-else class="d-flex align-center justify-center fill-height text-subtitle-2 text-white font-weight-medium">{{ userInitials }}</div>
 							</v-avatar>
 						</v-col>
@@ -57,6 +57,7 @@
 			<router-view />
 			<SnackMessageBar />
 			<ConfirmDialog />
+			<ProfileDialog v-model="profileDialog" />
 		</v-main>
 
 	</v-app>
@@ -65,6 +66,7 @@
 <script>
 import SnackMessageBar from './components/SnackMessageBar.vue'
 import ConfirmDialog from './components/common/ConfirmDialog.vue'
+import ProfileDialog from './components/ProfileDialog.vue'
 import { ui, user, theme } from '@/stores'
 
 export default {
@@ -72,6 +74,7 @@ name: 'App',
 
 data: () => ({
 	drawer: false,
+	profileDialog: false,
 }),
 
 computed: {
@@ -85,39 +88,19 @@ computed: {
 
 	// Display name derived from store currentUser
 	userDisplayName() {
-		return user.currentUser?.displayName || 'User'
+		return (user.currentUser?.displayName || 'User')
 	},
-
-	// Initials derived from displayName
+	// Initials for avatar fallback
 	userInitials() {
 		const dn = user.currentUser?.displayName || ''
 		if (!dn) return 'BU'
 		return dn.split(' ').filter(Boolean).slice(0,2).map(p=>p[0]).join('').toUpperCase()
-	},
-
-	// Display name for welcome text
-	userDisplayName() {
-		if (user.currentUser?.displayName) return user.currentUser.displayName
-		const names = user.currentUser?.displayName?.split(' ') || []
-		return names[0] || 'User'
-	},
-
-	// Initials for avatar fallback
-	userInitials() {
-		if (!user.currentUser?.displayName) return 'BU'
-		return user.currentUser.displayName
-			.split(' ')
-			.filter(Boolean)
-			.slice(0,2)
-			.map(n => n[0])
-			.join('')
-			.toUpperCase()
 	}
 },
 
 methods: { },
 
-components: { SnackMessageBar, ConfirmDialog }
+components: { SnackMessageBar, ConfirmDialog, ProfileDialog }
 }
 </script>
 

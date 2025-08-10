@@ -10,7 +10,7 @@
 -->
 
 <template>
-	<v-snackbar class="mt-10" location="top" v-model="ui.snack" :timeout="4000" :color="ui.snackColor">
+	<v-snackbar class="mt-n16" location="top" v-model="ui.snack" :timeout="2000" :color="ui.snackColor">
     	<div class="d-flex justify-center text-black">{{ ui.snackText }}</div>
     </v-snackbar>
 </template>

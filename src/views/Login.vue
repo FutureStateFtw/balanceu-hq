@@ -12,6 +12,7 @@
             <v-form @submit.prevent="attemptLogin" :disabled="loading" ref="formRef">
                 <v-text-field
                     v-model="username"
+                    autocomplete="username"
                     variant="solo"
                     flat
                     rounded
@@ -25,6 +26,7 @@
                 <v-text-field
                     v-model="password"
                     type="password"
+                    autocomplete="current-password"
                     variant="solo"
                     flat
                     rounded
