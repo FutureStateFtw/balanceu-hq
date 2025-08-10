@@ -19,9 +19,9 @@
 
             <!-- PROFILE SECTION -->
             <v-list density="compact" class="transparent-list mb-1">
-                <v-list-item @click="openProfile" rounded class="px-2">
+                <v-list-item @click="openProfile" rounded class="px-2 text-white">
                     <template #prepend>
-                        <v-icon icon="mdi-account-outline" class="mr-3" />
+                        <v-icon icon="mdi-account-outline" />
                     </template>
                     <v-list-item-title class="text-body-2">Profile</v-list-item-title>
                 </v-list-item>
@@ -29,14 +29,12 @@
 
             <!-- THEME SECTION (COLLAPSIBLE) -->
             <v-list density="compact" class="transparent-list">
-                <v-list-item rounded class="px-2 theme-toggle" @click.stop="toggleThemes" role="button">
+                <v-list-item rounded class="px-2 theme-toggle text-white" @click.stop="toggleThemes" role="button">
                     <template #prepend>
-                        <v-icon icon="mdi-palette-outline" size="18" class="mr-2" />
+                        <v-icon icon="mdi-palette-outline" />
                     </template>
                     <v-list-item-title class="text-body-2 font-weight-medium">Theme</v-list-item-title>
-                    <template #append>
-                        <v-icon :icon="showThemes ? 'mdi-chevron-up' : 'mdi-chevron-down'" size="18" />
-                    </template>
+                    
                 </v-list-item>
             </v-list>
             <transition name="theme-collapse">
@@ -56,7 +54,7 @@
 
             <v-divider class="my-4 divider-line" />
             <div class="d-flex justify-end">
-                <v-btn variant="text" color="red" class="text-none" @click="doLogout">Log Out</v-btn>
+                <v-btn variant="outlined" color="grey-lighten-1" class="text-none" @click="doLogout">Log Out</v-btn>
             </div>
             <div class="glass-border-glow" />
         </div>
@@ -115,19 +113,26 @@ export default {
 
 .profile-dialog-wrapper {
     position: relative;
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.15) 0%, 
-        rgba(255, 255, 255, 0.05) 100%);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 24px;
-    box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2),
-        0 0 0 1px rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.profile-dialog-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    pointer-events: none;
+    border-radius: 24px;
 }
 .profile-dialog-wrapper > *:not(.glass-border-glow) { position: relative; z-index: 2; }
 .glass-border-glow { 
