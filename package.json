@@ -8,6 +8,7 @@
     "serve": "vite preview",
     "build": "vite build",
     "deploy": "gh-pages -d dist",
+    "build:deploy": "vite build && gh-pages -d dist",
     "dev": "vite",
     "preview": "vite preview"
   },
