@@ -1,7 +1,7 @@
 <template>
     <v-container fluid class="pa-4 pa-md-6 liquid-glass-container">
 
-        <!-- OVERVIEW BALANCES -->
+        <!-- OVERVIEW BALANCES -->        
         <v-row class="mb-4">
             <v-col v-for="bal in balances" :key="bal.key" cols="12" sm="4" class="d-flex">
                 <div class="std-glass-card balance-card flex-grow-1" 
@@ -133,7 +133,7 @@
 </template>
 
 <script setup>
-    import { theme, ui, user } from '@/stores'
+    import { ui, user } from '@/stores'
     import { getUserBalances, getRecentTransactions, getTransactionsByBalanceType, getQuickActions, getBottomNavActions, formatTransactionDate } from '@/stores/mockDataUser.js'
 </script>
 

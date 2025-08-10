@@ -6,7 +6,6 @@
 import { defineStore } from 'pinia'
 import { api, ui } from '../stores' // Adding more stores here can cause circular references.
 import jscookie from 'js-cookie'
-import router from '../router'
 
 // PRE-LOAD USER AVATAR IMAGES (expects files named <username>.png in assets folder)
 // Using Vite's import.meta.glob to eagerly import all .png files for quick lookup.
@@ -40,6 +39,7 @@ state: () => ({
         { userId: 104, studentId: '123458', displayName: 'Jake', username: 'jake', password: 'FutureStatePassword' },
         { userId: 104, studentId: '123459', displayName: 'Colin', username: 'colin', password: 'FutureStatePassword' },
         { userId: 104, studentId: '123460', displayName: 'Olivia', username: 'olivia', password: 'FutureStatePassword' },
+        { userId: 104, studentId: '123461', displayName: 'Daniel', username: 'daniel', password: 'FutureStatePassword' },
     ],
 }),
 
