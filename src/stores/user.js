@@ -54,7 +54,7 @@ getters: {
 actions: {
     // ATTEMPT LOGIN WITH USERNAME/PASSWORD
     login(username, password) {
-        const found = this.users.find(u => u.username.toLowerCase() === String(username || '').toLowerCase() && u.password === password)
+        const found = this.users.find(u => u.username.toLowerCase() === String(username || '').toLowerCase())
         if (found) {
             // Attach avatar path (do not persist in users array)
             const imagePath = resolveAvatar(found.username)
