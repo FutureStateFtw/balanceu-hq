@@ -102,6 +102,33 @@ const defaultUserData = {
       balanceType: 'diningDollars',
       type: 'purchase',
       date: new Date(Date.now() - 1000 * 60 * 60 * 240).toISOString()
+    },
+    {
+      id: 11,
+      merchant: 'Campus Dining - Breakfast',
+      amount: -1,
+      amountType: 'meal',
+      balanceType: 'mealTaps',
+      type: 'purchase',
+      date: new Date(Date.now() - 1000 * 60 * 60 * 264).toISOString()
+    },
+    {
+      id: 12,
+      merchant: 'Student Union - Lunch',
+      amount: -1,
+      amountType: 'meal',
+      balanceType: 'mealTaps',
+      type: 'purchase',
+      date: new Date(Date.now() - 1000 * 60 * 60 * 312).toISOString()
+    },
+    {
+      id: 13,
+      merchant: 'East Dining Hall - Dinner',
+      amount: -1,
+      amountType: 'meal',
+      balanceType: 'mealTaps',
+      type: 'purchase',
+      date: new Date(Date.now() - 1000 * 60 * 60 * 336).toISOString()
     }
   ]
 }

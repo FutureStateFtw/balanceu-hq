@@ -22,11 +22,11 @@
 
 			<div class="d-flex justify-end">
 				<v-btn 
-					v-if="ui.confirmDialogType !== 'processing'"
+					v-if="ui.confirmDialogType !== 'processing' && ui.confirmDialogType !== 'Ok'"
 					class="std-glass-button me-3" 
 					@click="confirm(false)"
 				>
-					{{ ui.confirmDialogType === 'Ok' ? 'Cancel' : 'No' }}
+					No
 				</v-btn>
 				
 				<v-btn 

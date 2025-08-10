@@ -7,8 +7,8 @@
                 <div class="std-glass-card balance-card flex-grow-1" 
                      @mouseenter="hoverCard($event)" 
                      @mouseleave="leaveCard($event)"
-                     @click="bal.key === 'diningDollars' || bal.key === 'debitDollars' ? toggleBalanceDropdown(bal.key) : null"
-                     :class="{ 'balance-card-clickable': bal.key === 'diningDollars' || bal.key === 'debitDollars' }">
+                     @click="bal.key === 'diningDollars' || bal.key === 'debitDollars' || bal.key === 'mealTaps' ? toggleBalanceDropdown(bal.key) : null"
+                     :class="{ 'balance-card-clickable': bal.key === 'diningDollars' || bal.key === 'debitDollars' || bal.key === 'mealTaps' }">
                     <div class="card-inner pa-4">
                         <div class="d-flex align-center justify-space-between mb-1">
                             <div class="d-flex align-center">
@@ -42,7 +42,7 @@
                                             </div>
                                         </div>
                                         <div class="text-caption" :class="t.amount > 0 ? 'text-green-lighten-2' : 'std-text-glass'">
-                                            {{ formatCurrency(t.amount) }}
+                                            {{ t.amountType === 'meal' ? `${Math.abs(t.amount)} Meal${Math.abs(t.amount) !== 1 ? 's' : ''}` : formatCurrency(t.amount) }}
                                         </div>
                                     </div>
                                 </div>
@@ -55,27 +55,36 @@
             </v-col>
         </v-row>
 
-        <!-- RECENT TRANSACTIONS -->
+        <!-- ALL TRANSACTIONS -->
         <v-row class="mb-4">
             <v-col cols="12">
                 <div class="std-glass-panel">
-                    <div class="px-4 py-3 d-flex align-center justify-space-between" @click="transactionsOpen = !transactionsOpen" style="cursor: pointer;">
-                        <div class="text-subtitle-2 font-weight-medium std-text-glass-subtitle">Recent Transactions</div>
+                    <div class="px-4 py-6 d-flex align-center justify-space-between" @click="transactionsOpen = !transactionsOpen" style="cursor: pointer;">
+                        <div class="text-subtitle-2 font-weight-medium std-text-glass-subtitle">All Transactions</div>
                         <v-icon :icon="transactionsOpen ? 'mdi-chevron-up' : 'mdi-chevron-down'" size="18" class="std-text-glass-muted"></v-icon>
                     </div>
                     <v-expand-transition>
-                        <div v-show="transactionsOpen" class="transaction-list">
-                            <div v-for="t in recent" :key="t.id" class="transaction-row">
-                                <div class="merchant">
-                                    <div class="text-body-2 font-weight-medium std-text-glass">{{ t.merchant }}</div>
-                                    <div class="text-caption std-text-glass-muted">{{ formatTransactionDate(t.date) }}</div>
-                                </div>
-                                <div class="amount" :class="{'is-meal': t.amountType==='meal'}">
-                                    <span v-if="t.amountType==='meal'">-1 Meal</span>
-                                    <span v-else>{{ formatCurrency(t.amount) }}</span>
-                                    <v-icon icon="mdi-chevron-right" size="16" class="ml-2 std-text-glass-muted"></v-icon>
-                                </div>
-                            </div>
+                        <div v-show="transactionsOpen" class="transaction-list-container">
+                            <v-virtual-scroll
+                                :items="allTransactions"
+                                height="200"
+                                item-height="72"
+                                class="transaction-virtual-scroll"
+                            >
+                                <template v-slot:default="{ item }">
+                                    <div class="transaction-row">
+                                        <div class="merchant">
+                                            <div class="text-body-2 font-weight-medium std-text-glass">{{ item.merchant }}</div>
+                                            <div class="text-caption std-text-glass-muted">{{ formatTransactionDate(item.date) }}</div>
+                                        </div>
+                                        <div class="amount" :class="{'is-meal': item.amountType==='meal'}">
+                                            <span v-if="item.amountType==='meal'">{{ Math.abs(item.amount) }} Meal{{ Math.abs(item.amount) !== 1 ? 's' : '' }}</span>
+                                            <span v-else>{{ formatCurrency(item.amount) }}</span>
+                                            <v-icon icon="mdi-chevron-right" size="16" class="ml-2 std-text-glass-muted"></v-icon>
+                                        </div>
+                                    </div>
+                                </template>
+                            </v-virtual-scroll>
                         </div>
                     </v-expand-transition>
                 </div>
@@ -136,15 +145,17 @@ export default {
         // Data collections
         balances: [],
         recent: [],
+        allTransactions: [],
         quick: [],
         bottomNav: [],
 
         // UI State
         bottomNavOpen: false,
-        transactionsOpen: true,
+        transactionsOpen: false,
         balanceDropdowns: {
             diningDollars: false,
-            debitDollars: false
+            debitDollars: false,
+            mealTaps: false
         },
         dialog: false,
         dialogTitle: '',
@@ -164,6 +175,7 @@ export default {
             
             this.balances = getUserBalances(userId)
             this.recent = getRecentTransactions(userId, 5)
+            this.allTransactions = getRecentTransactions(userId, 50) // Load more transactions for scrolling
             this.quick = getQuickActions()
             this.bottomNav = getBottomNavActions()
         },
@@ -327,6 +339,19 @@ export default {
 
 .amount.is-meal { 
     color: rgba(255, 255, 255, 0.9) !important; 
+}
+
+.transaction-list-container {
+    max-height: 400px;
+    overflow: hidden;
+}
+
+.transaction-virtual-scroll {
+    background: transparent;
+}
+
+.transaction-virtual-scroll :deep(.v-virtual-scroll__container) {
+    background: transparent;
 }
 
 .balance-transaction-row {
