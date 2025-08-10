@@ -1,59 +1,59 @@
 <template>
-	<v-container fluid class="pa-4 pa-md-6 liquid-glass-container">
+	<v-container fluid class="pa-4 pa-md-6">
 		
 
 		
 		<!-- KEY METRICS CARDS -->
 		<v-row class="mb-4 mb-md-6">
 			<v-col cols="6" sm="6" md="3" xl="3">
-				<div class="liquid-glass-card metric-glass-card" @mouseenter="handleCardHover" @mouseleave="handleCardLeave">
-					<div class="glass-content">
-						<div class="glass-icon-container">
-							<v-icon icon="mdi-cash-multiple" size="48" class="glass-icon"></v-icon>
-							<div class="specular-highlight"></div>
+				<div class="std-glass-card metric-glass-card" @mouseenter="handleCardHover" @mouseleave="handleCardLeave">
+					<div class="std-glass-content">
+						<div class="std-glass-icon-container">
+							<v-icon icon="mdi-cash-multiple" size="48" class="std-glass-icon"></v-icon>
+							<div class="std-specular-highlight"></div>
 						</div>
-						<h3 class="glass-title">${{ metrics.totalVolume.toLocaleString() }}</h3>
-						<p class="glass-subtitle">Total Volume Today</p>
-						<div class="glass-border-glow"></div>
+						<h3 class="std-glass-title">${{ metrics.totalVolume.toLocaleString() }}</h3>
+						<p class="std-glass-subtitle">Total Volume Today</p>
+						<div class="std-glass-border-glow"></div>
 					</div>
 				</div>
 			</v-col>
 			<v-col cols="6" sm="6" md="3" xl="3">
-				<div class="liquid-glass-card metric-glass-card" @mouseenter="handleCardHover" @mouseleave="handleCardLeave">
-					<div class="glass-content">
-						<div class="glass-icon-container">
-							<v-icon icon="mdi-credit-card" size="48" class="glass-icon"></v-icon>
-							<div class="specular-highlight"></div>
+				<div class="std-glass-card metric-glass-card" @mouseenter="handleCardHover" @mouseleave="handleCardLeave">
+					<div class="std-glass-content">
+						<div class="std-glass-icon-container">
+							<v-icon icon="mdi-credit-card" size="48" class="std-glass-icon"></v-icon>
+							<div class="std-specular-highlight"></div>
 						</div>
-						<h3 class="glass-title">{{ metrics.totalTransactions.toLocaleString() }}</h3>
-						<p class="glass-subtitle">Transactions Today</p>
-						<div class="glass-border-glow"></div>
+						<h3 class="std-glass-title">{{ metrics.totalTransactions.toLocaleString() }}</h3>
+						<p class="std-glass-subtitle">Transactions Today</p>
+						<div class="std-glass-border-glow"></div>
 					</div>
 				</div>
 			</v-col>
 			<v-col cols="6" sm="6" md="3" xl="3">
-				<div class="liquid-glass-card metric-glass-card" @mouseenter="handleCardHover" @mouseleave="handleCardLeave">
-					<div class="glass-content">
-						<div class="glass-icon-container">
-							<v-icon icon="mdi-account-group" size="48" class="glass-icon"></v-icon>
-							<div class="specular-highlight"></div>
+				<div class="std-glass-card metric-glass-card" @mouseenter="handleCardHover" @mouseleave="handleCardLeave">
+					<div class="std-glass-content">
+						<div class="std-glass-icon-container">
+							<v-icon icon="mdi-account-group" size="48" class="std-glass-icon"></v-icon>
+							<div class="std-specular-highlight"></div>
 						</div>
-						<h3 class="glass-title">{{ metrics.activeUsers.toLocaleString() }}</h3>
-						<p class="glass-subtitle">Active Users</p>
-						<div class="glass-border-glow"></div>
+						<h3 class="std-glass-title">{{ metrics.activeUsers.toLocaleString() }}</h3>
+						<p class="std-glass-subtitle">Active Users</p>
+						<div class="std-glass-border-glow"></div>
 					</div>
 				</div>
 			</v-col>
 			<v-col cols="6" sm="6" md="3" xl="3">
-				<div class="liquid-glass-card metric-glass-card" @mouseenter="handleCardHover" @mouseleave="handleCardLeave">
-					<div class="glass-content">
-						<div class="glass-icon-container">
-							<v-icon icon="mdi-server-network" size="48" class="glass-icon"></v-icon>
-							<div class="specular-highlight"></div>
+				<div class="std-glass-card metric-glass-card" @mouseenter="handleCardHover" @mouseleave="handleCardLeave">
+					<div class="std-glass-content">
+						<div class="std-glass-icon-container">
+							<v-icon icon="mdi-server-network" size="48" class="std-glass-icon"></v-icon>
+							<div class="std-specular-highlight"></div>
 						</div>
-						<h3 class="glass-title">{{ metrics.systemsOnline }}/{{ metrics.systemsTotal }}</h3>
-						<p class="glass-subtitle">Systems Online</p>
-						<div class="glass-border-glow"></div>
+						<h3 class="std-glass-title">{{ metrics.systemsOnline }}/{{ metrics.systemsTotal }}</h3>
+						<p class="std-glass-subtitle">Systems Online</p>
+						<div class="std-glass-border-glow"></div>
 					</div>
 				</div>
 			</v-col>
@@ -62,12 +62,12 @@
 		<!-- CHARTS SECTION -->
 		<v-row class="mb-4 mb-md-6">
 			<v-col cols="12" lg="6" xl="6">
-				<div class="liquid-glass-panel chart-glass-panel">
-					<div class="glass-content">
+				<div class="std-glass-panel chart-glass-panel">
+					<div class="std-glass-content">
 						<div class="panel-header">
-							<div class="glass-icon-container small">
-								<v-icon icon="mdi-chart-line" size="32" class="glass-icon"></v-icon>
-								<div class="specular-highlight"></div>
+							<div class="std-glass-icon-container small">
+								<v-icon icon="mdi-chart-line" size="32" class="std-glass-icon"></v-icon>
+								<div class="std-specular-highlight"></div>
 							</div>
 							<div class="panel-title">
 								<h4>Transaction Analytics</h4>
@@ -82,17 +82,17 @@
 								:series="transactionChartSeries"
 							></apexchart>
 						</div>
-						<div class="glass-border-glow"></div>
+						<div class="std-glass-border-glow"></div>
 					</div>
 				</div>
 			</v-col>
 			<v-col cols="12" lg="6" xl="6">
-				<div class="liquid-glass-panel chart-glass-panel">
-					<div class="glass-content">
+				<div class="std-glass-panel chart-glass-panel">
+					<div class="std-glass-content">
 						<div class="panel-header">
-							<div class="glass-icon-container small">
-								<v-icon icon="mdi-currency-usd" size="32" class="glass-icon"></v-icon>
-								<div class="specular-highlight"></div>
+							<div class="std-glass-icon-container small">
+								<v-icon icon="mdi-currency-usd" size="32" class="std-glass-icon"></v-icon>
+								<div class="std-specular-highlight"></div>
 							</div>
 							<div class="panel-title">
 								<h4>Dollar Volume</h4>
@@ -107,7 +107,7 @@
 								:series="dollarChartSeries"
 							></apexchart>
 						</div>
-						<div class="glass-border-glow"></div>
+						<div class="std-glass-border-glow"></div>
 					</div>
 				</div>
 			</v-col>
@@ -117,12 +117,12 @@
 		<v-row>
 			<!-- TRANSACTIONS TABLE -->
 			<v-col cols="12" lg="8">
-				<div class="liquid-glass-panel transactions-glass-panel">
-					<div class="glass-content">
+				<div class="std-glass-panel transactions-glass-panel">
+					<div class="std-glass-content">
 						<div class="panel-header">
-							<div class="glass-icon-container small">
-								<v-icon icon="mdi-format-list-bulleted" size="32" class="glass-icon"></v-icon>
-								<div class="specular-highlight"></div>
+							<div class="std-glass-icon-container small">
+								<v-icon icon="mdi-format-list-bulleted" size="32" class="std-glass-icon"></v-icon>
+								<div class="std-specular-highlight"></div>
 							</div>
 							<div class="panel-title">
 								<h4>Recent Transactions</h4>
@@ -173,7 +173,7 @@
 								</template>
 							</v-data-table>
 						</div>
-						<div class="glass-border-glow"></div>
+						<div class="std-glass-border-glow"></div>
 					</div>
 				</div>
 			</v-col>
@@ -181,12 +181,12 @@
 			<!-- RIGHT SIDEBAR -->
 			<v-col cols="12" lg="4">
 				<!-- SYSTEM ALERTS -->
-				<div class="liquid-glass-panel alerts-glass-panel mb-4">
-					<div class="glass-content">
+				<div class="std-glass-panel alerts-glass-panel mb-4">
+					<div class="std-glass-content">
 						<div class="panel-header">
-							<div class="glass-icon-container small">
-								<v-icon icon="mdi-alert-circle" size="32" class="glass-icon alert-icon"></v-icon>
-								<div class="specular-highlight"></div>
+							<div class="std-glass-icon-container small">
+								<v-icon icon="mdi-alert-circle" size="32" class="std-glass-icon alert-icon"></v-icon>
+								<div class="std-specular-highlight"></div>
 							</div>
 							<div class="panel-title">
 								<h4>System Alerts</h4>
@@ -204,17 +204,17 @@
 								<div class="alert-pulse-dot"></div>
 							</div>
 						</div>
-						<div class="glass-border-glow"></div>
+						<div class="std-glass-border-glow"></div>
 					</div>
 				</div>
 
 				<!-- QUICK ACTIONS -->
-				<div class="liquid-glass-panel actions-glass-panel">
-					<div class="glass-content">
+				<div class="std-glass-panel actions-glass-panel">
+					<div class="std-glass-content">
 						<div class="panel-header">
-							<div class="glass-icon-container small">
-								<v-icon icon="mdi-lightning-bolt" size="32" class="glass-icon"></v-icon>
-								<div class="specular-highlight"></div>
+							<div class="std-glass-icon-container small">
+								<v-icon icon="mdi-lightning-bolt" size="32" class="std-glass-icon"></v-icon>
+								<div class="std-specular-highlight"></div>
 							</div>
 							<div class="panel-title">
 								<h4>Quick Actions</h4>
@@ -244,7 +244,7 @@
 								<div class="action-ripple"></div>
 							</div>
 						</div>
-						<div class="glass-border-glow"></div>
+						<div class="std-glass-border-glow"></div>
 					</div>
 				</div>
 			</v-col>
@@ -252,10 +252,10 @@
 
 		<!-- ACTION DIALOG -->
 		<v-dialog v-model="actionDialog" max-width="500">
-			<div class="liquid-glass-panel dialog-glass-panel">
-				<div class="glass-content">
+			<div class="std-glass-panel dialog-glass-panel">
+				<div class="std-glass-content">
 					<div class="dialog-header">
-						<h3 class="glass-title">{{ actionDialogTitle }}</h3>
+						<h3 class="std-glass-title">{{ actionDialogTitle }}</h3>
 					</div>
 					<div class="dialog-message">
 						{{ actionDialogMessage }}
@@ -268,7 +268,7 @@
 							<span class="action-text">Confirm</span>
 						</div>
 					</div>
-					<div class="glass-border-glow"></div>
+					<div class="std-glass-border-glow"></div>
 				</div>
 			</div>
 		</v-dialog>
@@ -658,71 +658,73 @@ export default {
 </script>
 
 <style scoped>
-/* LIQUID GLASS DASHBOARD STYLES */
+/* ADMIN DASHBOARD STYLES - Using std-glass classes */
 
-.liquid-glass-container {
-	min-height: 100vh;
-	position: relative;
-	overflow: hidden;
-}
-
-.glass-text {
-	text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-}
-
-/* Metric Glass Cards */
+/* Metric Cards - Custom styling for dashboard metrics */
 .metric-glass-card {
 	height: 200px !important;
-}
-
-.metric-glass-card .glass-content {
-	text-align: center;
+	display: flex;
+	align-items: center;
 	justify-content: center;
+	text-align: center;
 }
 
-.metric-glass-card .glass-title {
+.metric-glass-card .std-glass-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 24px;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+}
+
+.std-glass-content {
+	display: flex;
+	flex-direction: column;
+	padding: 24px;
+	height: 100%;
+	width: 100%;
+}
+
+.std-glass-icon-container {
+	width: 80px;
+	height: 80px;
+	border-radius: 20px;
+	margin-bottom: 16px;
+}
+
+.std-glass-icon-container.small {
+	width: 56px;
+	height: 56px;
+	border-radius: 16px;
+	margin-bottom: 0;
+	margin-right: 0;
+}
+
+.std-glass-icon {
+	color: rgba(255, 255, 255, 0.9) !important;
+	transition: all var(--std-transition-normal) var(--std-ease-out);
+}
+
+.std-glass-title {
+	color: rgba(255, 255, 255, 0.95) !important;
 	font-size: 2rem !important;
 	font-weight: 700 !important;
 	margin-bottom: 8px !important;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.glass-subtitle {
-	color: rgba(255, 255, 255, 0.8);
+.std-glass-subtitle {
+	color: rgba(255, 255, 255, 0.8) !important;
 	font-size: 0.9rem;
 	font-weight: 500;
 	margin: 0;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* Card Hover Effects */
-.metric-glass-card.card-hovered {
-	transform: translateY(-8px) scale(1.03);
-	box-shadow: 
-		0 16px 40px rgba(135, 206, 235, 0.25),
-		0 8px 20px rgba(0, 0, 0, 0.3);
-	transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.metric-glass-card.card-hovered .glass-title {
-	text-shadow: 
-		0 0 30px rgba(255, 255, 255, 0.6),
-		0 2px 4px rgba(0, 0, 0, 0.3);
-	transform: scale(1.05);
-	transition: all 0.3s ease;
-}
-
-.metric-glass-card.card-hovered .glass-icon {
-	transform: translateY(-2px) scale(1.1);
-	filter: drop-shadow(0 0 15px rgba(135, 206, 235, 0.6));
-	transition: all 0.3s ease;
-}
-
-.metric-glass-card.card-hovered .glass-subtitle {
-	color: rgba(255, 255, 255, 0.95);
-	text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-	transition: all 0.3s ease;
-}
-
-/* Chart Glass Panels */
+/* Chart Panels */
 .chart-glass-panel {
 	min-height: 350px;
 }
@@ -732,11 +734,37 @@ export default {
 	margin-top: 16px;
 }
 
-/* Transactions Glass Panel */
+/* Transactions Panel */
 .transactions-glass-panel {
 	min-height: 600px;
 }
 
+/* Alerts Panel */
+.alerts-glass-panel {
+	min-height: 300px;
+}
+
+/* Actions Panel */
+.actions-glass-panel {
+	min-height: 250px;
+}
+
+/* Panel Headers */
+.panel-header {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	margin-bottom: 16px;
+}
+
+.panel-title h4 {
+	color: rgba(255, 255, 255, 0.95);
+	margin: 0 0 4px 0;
+	font-size: 1.2rem;
+	font-weight: 600;
+}
+
+/* Search Field */
 .glass-search-container {
 	margin: 20px 0;
 }
@@ -744,8 +772,6 @@ export default {
 .glass-search-field {
 	background: rgba(255, 255, 255, 0.1) !important;
 	border-radius: 16px !important;
-	position: relative;
-	z-index: 10;
 }
 
 .glass-search-field :deep(.v-field) {
@@ -754,31 +780,17 @@ export default {
 	border: 1px solid rgba(255, 255, 255, 0.2) !important;
 	backdrop-filter: blur(10px);
 	-webkit-backdrop-filter: blur(10px);
-	position: relative;
-	z-index: 10;
 }
 
 .glass-search-field :deep(.v-field__input) {
 	color: white !important;
-	pointer-events: auto !important;
-}
-
-.glass-search-field :deep(.v-field__field) {
-	pointer-events: auto !important;
-}
-
-.glass-search-field :deep(.v-field__prepend-inner) {
-	pointer-events: auto !important;
-}
-
-.glass-search-field :deep(.v-field__append-inner) {
-	pointer-events: auto !important;
 }
 
 .glass-search-field :deep(.v-field__outline) {
 	display: none;
 }
 
+/* Data Table */
 .glass-table-container {
 	flex: 1;
 	border-radius: 20px;
@@ -789,7 +801,6 @@ export default {
 	-webkit-backdrop-filter: blur(10px);
 }
 
-/* Glass Data Table */
 .glass-data-table {
 	background: transparent !important;
 }
@@ -802,8 +813,6 @@ export default {
 	background: linear-gradient(135deg, 
 		rgba(255, 255, 255, 0.2) 0%, 
 		rgba(255, 255, 255, 0.1) 100%) !important;
-	backdrop-filter: blur(20px);
-	-webkit-backdrop-filter: blur(20px);
 }
 
 .glass-data-table :deep(.v-data-table-header th) {
@@ -814,8 +823,7 @@ export default {
 
 .glass-data-table :deep(.v-data-table__tr) {
 	background: transparent !important;
-	transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-	position: relative !important;
+	transition: all var(--std-transition-normal) var(--std-ease-out) !important;
 }
 
 .glass-data-table :deep(.v-data-table__tr:hover) {
@@ -824,32 +832,6 @@ export default {
 		rgba(255, 255, 255, 0.1) 50%, 
 		rgba(135, 206, 235, 0.15) 100%) !important;
 	transform: translateX(4px) !important;
-	box-shadow: 0 4px 20px rgba(135, 206, 235, 0.2) !important;
-}
-
-.glass-data-table :deep(.v-data-table__tr:hover::before) {
-	content: '';
-	position: absolute;
-	left: 0;
-	top: 0;
-	bottom: 0;
-	width: 4px;
-	background: linear-gradient(to bottom, 
-		var(--theme-primary, #2E5984), 
-		var(--theme-accent, #87CEEB));
-	border-radius: 0 4px 4px 0;
-	animation: slideInGlow 0.3s ease-out;
-}
-
-@keyframes slideInGlow {
-	from {
-		transform: translateX(-4px);
-		opacity: 0;
-	}
-	to {
-		transform: translateX(0);
-		opacity: 1;
-	}
 }
 
 .glass-data-table :deep(.v-data-table__td) {
@@ -868,7 +850,13 @@ export default {
 	font-weight: 600 !important;
 }
 
-/* Glass Chips */
+.amount-text {
+	color: rgba(255, 255, 255, 0.95) !important;
+	font-weight: 600 !important;
+	font-size: 0.9rem !important;
+}
+
+/* Balance Type Chips */
 .glass-chip {
 	padding: 6px 12px;
 	border-radius: 20px;
@@ -879,15 +867,8 @@ export default {
 	backdrop-filter: blur(10px);
 	-webkit-backdrop-filter: blur(10px);
 	border: 1px solid rgba(255, 255, 255, 0.2);
-	transition: all 0.3s ease;
 	display: inline-block;
 	vertical-align: middle;
-}
-
-.amount-text {
-	color: rgba(255, 255, 255, 0.95) !important;
-	font-weight: 600 !important;
-	font-size: 0.9rem !important;
 }
 
 .tonal-balance-chip.dining-cash {
@@ -895,11 +876,10 @@ export default {
 		rgba(255, 255, 255, 0.15) 0%, 
 		rgba(255, 255, 255, 0.08) 100%);
 	border: 1px solid rgba(255, 255, 255, 0.25);
-	white-space: nowrap;
+	max-width: 100px;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	min-width: 0;
-	max-width: 100px;
+	white-space: nowrap;
 }
 
 .tonal-balance-chip.flex-plan {
@@ -907,11 +887,10 @@ export default {
 		rgba(255, 255, 255, 0.12) 0%, 
 		rgba(255, 255, 255, 0.06) 100%);
 	border: 1px solid rgba(255, 255, 255, 0.2);
-	white-space: nowrap;
+	max-width: 100px;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	min-width: 0;
-	max-width: 100px;
+	white-space: nowrap;
 }
 
 .tonal-balance-chip.meal-swipe {
@@ -919,18 +898,13 @@ export default {
 		rgba(255, 255, 255, 0.18) 0%, 
 		rgba(255, 255, 255, 0.1) 100%);
 	border: 1px solid rgba(255, 255, 255, 0.3);
-	white-space: nowrap;
+	max-width: 100px;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	min-width: 0;
-	max-width: 100px;
+	white-space: nowrap;
 }
 
-/* Alerts Glass Panel */
-.alerts-glass-panel {
-	min-height: 300px;
-}
-
+/* Alert Items */
 .alerts-container {
 	flex: 1;
 	margin-top: 16px;
@@ -945,15 +919,12 @@ export default {
 	border-radius: 16px;
 	background: rgba(255, 255, 255, 0.05);
 	border: 1px solid rgba(255, 255, 255, 0.1);
-	transition: all 0.3s ease;
-	position: relative;
-	overflow: hidden;
+	transition: all var(--std-transition-normal) var(--std-ease-out);
 }
 
 .glass-alert-item:hover {
 	background: rgba(255, 255, 255, 0.1);
 	transform: translateY(-2px);
-	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .alert-severity-indicator {
@@ -961,7 +932,6 @@ export default {
 	height: 12px;
 	border-radius: 50%;
 	margin-top: 4px;
-	box-shadow: 0 0 10px currentColor;
 }
 
 .alert-severity-indicator.critical {
@@ -1024,11 +994,7 @@ export default {
 	50% { opacity: 1; transform: scale(1.3); }
 }
 
-/* Actions Glass Panel */
-.actions-glass-panel {
-	min-height: 250px;
-}
-
+/* Action Buttons */
 .actions-container {
 	flex: 1;
 	margin-top: 16px;
@@ -1046,7 +1012,7 @@ export default {
 		rgba(255, 255, 255, 0.05) 100%);
 	border: 1px solid rgba(255, 255, 255, 0.2);
 	cursor: pointer;
-	transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	transition: all var(--std-transition-slow) var(--std-ease-out);
 	position: relative;
 	overflow: hidden;
 }
@@ -1057,7 +1023,6 @@ export default {
 		rgba(255, 255, 255, 0.2) 0%, 
 		rgba(255, 255, 255, 0.1) 100%);
 	transform: translateY(-2px) scale(1.02);
-	box-shadow: 0 8px 25px rgba(135, 206, 235, 0.3);
 }
 
 .action-icon {
@@ -1100,7 +1065,7 @@ export default {
 	height: 200px;
 }
 
-/* Dialog Glass Panel */
+/* Dialog */
 .dialog-glass-panel {
 	min-width: 400px;
 	margin: 20px;
@@ -1143,25 +1108,37 @@ export default {
 		rgba(76, 175, 80, 0.1) 100%);
 }
 
-/* Panel Headers */
-.panel-header {
-	display: flex;
-	align-items: center;
-	gap: 16px;
-	margin-bottom: 16px;
-}
-
-.glass-icon-container.small {
-	width: 56px;
-	height: 56px;
-	margin: 0;
-}
-
-.panel-title h4 {
-	color: rgba(255, 255, 255, 0.95);
-	margin: 0 0 4px 0;
-	font-size: 1.2rem;
+/* Status Indicators */
+.status-indicator {
+	padding: 4px 8px;
+	border-radius: 12px;
+	font-size: 0.75rem;
 	font-weight: 600;
+	color: white;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+}
+
+.status-indicator.optimal {
+	background: rgba(76, 175, 80, 0.3);
+	border: 1px solid rgba(76, 175, 80, 0.4);
+}
+
+.status-indicator.secure {
+	background: rgba(33, 150, 243, 0.3);
+	border: 1px solid rgba(33, 150, 243, 0.4);
+}
+
+.status-indicator.critical {
+	background: rgba(244, 67, 54, 0.3);
+	border: 1px solid rgba(244, 67, 54, 0.4);
+	animation: criticalBlink 2s ease-in-out infinite;
+}
+
+@keyframes criticalBlink {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0.7; }
 }
 
 /* Alert Icon */
@@ -1170,13 +1147,42 @@ export default {
 	filter: drop-shadow(0 0 8px rgba(244, 67, 54, 0.5));
 }
 
+/* Card Hover Effects */
+.metric-glass-card.card-hovered {
+	transform: translateY(-8px) scale(1.03);
+	box-shadow: 
+		0 16px 40px rgba(135, 206, 235, 0.25),
+		0 8px 20px rgba(0, 0, 0, 0.3);
+	transition: all var(--std-transition-slow) var(--std-ease-out);
+}
+
+.metric-glass-card.card-hovered .std-glass-title {
+	text-shadow: 
+		0 0 30px rgba(255, 255, 255, 0.6),
+		0 2px 4px rgba(0, 0, 0, 0.3);
+	transform: scale(1.05);
+	transition: all var(--std-transition-normal) ease;
+}
+
+.metric-glass-card.card-hovered .std-glass-icon {
+	transform: translateY(-2px) scale(1.1);
+	filter: drop-shadow(0 0 15px rgba(135, 206, 235, 0.6));
+	transition: all var(--std-transition-normal) ease;
+}
+
+.metric-glass-card.card-hovered .std-glass-subtitle {
+	color: rgba(255, 255, 255, 0.95);
+	text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+	transition: all var(--std-transition-normal) ease;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
 	.metric-glass-card {
 		height: 160px !important;
 	}
 	
-	.metric-glass-card .glass-title {
+	.std-glass-title {
 		font-size: 1.5rem !important;
 	}
 	
@@ -1191,74 +1197,6 @@ export default {
 	.dialog-glass-panel {
 		min-width: 300px;
 		margin: 10px;
-	}
-}
-
-/* Enhanced Animations */
-@keyframes glassShimmer {
-	0% { background-position: -200% 0; }
-	100% { background-position: 200% 0; }
-}
-
-.glass-action-btn::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: -100%;
-	width: 100%;
-	height: 100%;
-	background: linear-gradient(90deg, 
-		transparent, 
-		rgba(255, 255, 255, 0.2), 
-		transparent);
-	transition: left 0.5s ease;
-}
-
-.glass-action-btn:hover::before {
-	left: 100%;
-}
-
-/* Floating Animation for Icons */
-.glass-icon {
-	animation: floatIcon 6s ease-in-out infinite;
-}
-
-@keyframes floatIcon {
-	0%, 100% { transform: translateY(0px); }
-	50% { transform: translateY(-3px); }
-}
-
-/* Enhanced Status Indicators */
-.status-indicator.critical {
-	background: rgba(244, 67, 54, 0.2);
-	color: #F44336;
-	border: 1px solid rgba(244, 67, 54, 0.3);
-	animation: criticalBlink 2s ease-in-out infinite;
-}
-
-@keyframes criticalBlink {
-	0%, 100% { opacity: 1; }
-	50% { opacity: 0.7; }
-}
-
-/* Enhanced Table Row Animation */
-.glass-data-table :deep(.v-data-table__tr:first-child) {
-	animation: newRowSlide 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-@keyframes newRowSlide {
-	from {
-		opacity: 0;
-		transform: translateY(-30px) translateX(-20px);
-		background: linear-gradient(90deg, 
-			rgba(135, 206, 235, 0.3) 0%, 
-			rgba(255, 255, 255, 0.2) 50%, 
-			rgba(135, 206, 235, 0.3) 100%);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0) translateX(0);
-		background: transparent;
 	}
 }
 </style>

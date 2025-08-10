@@ -348,6 +348,7 @@ export default {
 
 .transaction-virtual-scroll {
     background: transparent;
+    overflow-x: hidden;
 }
 
 .transaction-virtual-scroll :deep(.v-virtual-scroll__container) {
