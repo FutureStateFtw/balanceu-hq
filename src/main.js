@@ -2,7 +2,7 @@
 import App from './App.vue'
 
 // Styles
-import './assets/liquid-glass.css'
+import './assets/liquid-glass-std.css'
 
 // Composables
 import { createApp } from 'vue'

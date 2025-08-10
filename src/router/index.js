@@ -6,6 +6,7 @@ import ServiceDown from '../views/ServiceDown.vue'
 import NotAuthorized from '../views/NotAuthorized.vue'
 import User from '../views/User.vue'
 import Login from '../views/Login.vue'
+import Deposit from '../views/Deposit.vue'
 import { user, ui, api, app } from '@/stores'
 
 const router = createRouter({
@@ -39,6 +40,12 @@ const router = createRouter({
 			name: 'User',
 			component: User,
 			beforeEnter() { ui.pageTitle="BalanceU" },
+		},
+		{
+			path: '/deposit',
+			name: 'Deposit',
+			component: Deposit,
+			beforeEnter() { ui.pageTitle="BalanceU - Deposit Funds" },
 		},
 		{
 			path: '/login',

@@ -1,0 +1,346 @@
+/* Liquid Glass Standard CSS - Standardized glass morphism design system */
+/* Mobile-first approach with consistent animation timing */
+/* Theme-aware with transparency to let background gradients show through */
+
+/* ANIMATION TIMING CONSTANTS */
+:root {
+    --std-transition-fast: 0.25s;
+    --std-transition-normal: 0.35s;
+    --std-transition-slow: 0.4s;
+    --std-ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --std-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* BASE GLASS EFFECTS */
+.std-glass-blur {
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+.std-glass-border {
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.std-glass-border-light {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* STANDARD GLASS CARD */
+.std-glass-card {
+    position: relative;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-radius: 24px !important;
+    overflow: hidden;
+    transition: all var(--std-transition-slow) var(--std-ease-out);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+}
+
+.std-glass-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 14px 32px -4px rgba(0, 0, 0, 0.35), 
+                0 4px 12px rgba(135, 206, 235, 0.35) !important;
+}
+
+/* STANDARD GLASS PANEL - Less pronounced for larger areas */
+.std-glass-panel {
+    position: relative;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.06) 100%) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 20px !important;
+    overflow: hidden;
+    transition: all var(--std-transition-normal) var(--std-ease-out);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08) !important;
+}
+
+.std-glass-panel:hover {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.08) 100%) !important;
+}
+
+/* STANDARD GLASS ACTION CARD - For interactive elements */
+.std-glass-action-card {
+    position: relative;
+    background: linear-gradient(165deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.05) 100%) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-radius: 22px !important;
+    cursor: pointer;
+    transition: all var(--std-transition-slow) var(--std-ease-out);
+    overflow: hidden;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1) !important;
+}
+
+.std-glass-action-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    background: linear-gradient(165deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.08) 100%) !important;
+    box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.4),
+                0 6px 20px rgba(135, 206, 235, 0.4) !important;
+}
+
+.std-glass-action-card:active {
+    transform: translateY(-2px) scale(1.01);
+}
+
+/* STANDARD SUBPAGE HEADER - Replaces main app bar */
+.std-subpage-header {
+    position: relative;
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* NAVIGATION DRAWER STYLING */
+.std-glass-drawer {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.std-glass-drawer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.std-glass-drawer > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* NAVIGATION LIST STYLING */
+.std-glass-list {
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+.std-glass-list-item {
+    margin: 4px 12px;
+    border-radius: 16px;
+    transition: all var(--std-transition-normal) var(--std-ease-out);
+    background: transparent !important;
+}
+
+.std-glass-list-item:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.std-glass-list-item.v-list-item--active {
+    background: rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.std-glass-list-item .v-icon {
+    color: rgba(255, 255, 255, 0.8) !important;
+    transition: color var(--std-transition-fast);
+}
+
+.std-glass-list-item:hover .v-icon,
+.std-glass-list-item.v-list-item--active .v-icon {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* DIVIDER STYLING */
+.std-glass-divider {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    margin: 8px 0 !important;
+}
+
+/* BUTTON STYLING */
+.std-glass-button {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 16px !important;
+    transition: all var(--std-transition-normal) var(--std-ease-out);
+}
+
+.std-glass-button:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* FULL SCREEN DIALOG CONTAINER */
+.std-fullscreen-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    z-index: 2000;
+}
+
+/* DIALOG CONTENT AREA */
+.std-dialog-content {
+    height: 100vh;
+    overflow-y: auto;
+    padding: 0;
+}
+
+/* DIALOG CONTENT PADDING */
+.std-dialog-body {
+    padding: 16px;
+}
+
+/* BACK BUTTON STYLING */
+.std-back-button {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px !important;
+    transition: all var(--std-transition-fast) var(--std-ease-out);
+}
+
+.std-back-button:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    transform: translateX(-2px);
+}
+
+/* GLASS BORDER GLOW ANIMATION */
+.std-glass-border-glow {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: inherit;
+    background: linear-gradient(45deg, 
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.3));
+    background-size: 300% 300%;
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+    animation: std-border-glow 3s ease-in-out infinite alternate;
+    transition: opacity var(--std-transition-normal);
+}
+
+.std-glass-card:hover .std-glass-border-glow,
+.std-glass-action-card:hover .std-glass-border-glow {
+    opacity: 0.6;
+}
+
+@keyframes std-border-glow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* RESPONSIVE ADJUSTMENTS */
+@media (max-width: 600px) {
+    .std-glass-card,
+    .std-glass-panel,
+    .std-glass-action-card {
+        border-radius: 18px !important;
+    }
+    
+    .std-glass-list-item {
+        border-radius: 12px;
+    }
+    
+    .std-dialog-body {
+        padding: 12px;
+    }
+    
+    .std-glass-card:hover,
+    .std-glass-action-card:hover {
+        transform: translateY(-2px) scale(1.01);
+    }
+}
+
+@media (min-width: 1200px) {
+    .std-glass-card,
+    .std-glass-panel,
+    .std-glass-action-card {
+        border-radius: 28px !important;
+    }
+    
+    .std-glass-list-item {
+        border-radius: 20px;
+    }
+    
+    .std-dialog-body {
+        padding: 24px;
+    }
+}
+
+/* UTILITY CLASSES */
+.std-text-glass {
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.std-text-glass-subtitle {
+    color: rgba(255, 255, 255, 0.75) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.std-text-glass-muted {
+    color: rgba(255, 255, 255, 0.6) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* GLASS ICON CONTAINER - Reusable for any page that needs icon containers */
+.std-glass-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    transition: all var(--std-transition-normal) var(--std-ease-out);
+}
+
+.std-glass-icon-container:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%) !important;
+    transform: scale(1.05);
+}
+
+/* GLASS AVATAR - Reusable for profile avatars */
+.std-glass-avatar {
+    border-radius: 12px !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    transition: all var(--std-transition-normal) var(--std-ease-out);
+}
+
+.std-glass-avatar:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* FADE SLIDE ANIMATIONS */
+.std-fade-slide-enter-active {
+    transition: all var(--std-transition-normal) var(--std-ease-out);
+}
+
+.std-fade-slide-leave-active {
+    transition: all var(--std-transition-fast) var(--std-ease-in-out);
+}
+
+.std-fade-slide-enter-from,
+.std-fade-slide-leave-to {
+    opacity: 0;
+    transform: translateY(12px);
+}

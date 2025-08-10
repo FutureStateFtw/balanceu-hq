@@ -29,7 +29,7 @@
 							<span class="user-name">{{ userDisplayName }}</span>
 						</v-col>
 						<v-col cols="auto" class="mr-4">
-							<v-avatar size="40" class="elevation-2 user-profile-card" @click="profileDialog=true">
+							<v-avatar size="40" class="elevation-2 std-glass-avatar" @click="profileDialog=true">
 								<v-img v-if="user.avatarUrl || user.currentUser?.avatar" :src="user.avatarUrl || user.currentUser?.avatar" cover></v-img>
 								<div v-else class="d-flex align-center justify-center fill-height text-subtitle-2 text-white font-weight-medium">{{ userInitials }}</div>
 							</v-avatar>
@@ -40,13 +40,13 @@
 		</v-app-bar>
 
 		<!-- MAIN MENU -->
-		<v-navigation-drawer v-if="!isLoginRoute" v-model="drawer" temporary width="375" class="liquid-glass-drawer">
-			<v-list nav dense class="themed-list">
-				<v-list-item to="/user" title="User" prepend-icon="mdi-account" class="themed-list-item" />
-				<v-list-item to="/admin" title="Admin" prepend-icon="mdi-shield-account" class="themed-list-item" />
-				<v-list-item to="/About" title="About" prepend-icon="mdi-information" class="themed-list-item" />
-				<v-list-item to="/theme" title="Theme Selection" prepend-icon="mdi-palette" class="themed-list-item" />
-				<v-divider class="mt-4 mb-4 themed-divider" />
+		<v-navigation-drawer v-if="!isLoginRoute" v-model="drawer" temporary width="375" class="std-glass-drawer">
+			<v-list nav dense class="std-glass-list">
+				<v-list-item to="/user" title="User" prepend-icon="mdi-account" class="std-glass-list-item" />
+				<v-list-item to="/admin" title="Admin" prepend-icon="mdi-shield-account" class="std-glass-list-item" />
+				<v-list-item to="/About" title="About" prepend-icon="mdi-information" class="std-glass-list-item" />
+				<v-list-item to="/theme" title="Theme Selection" prepend-icon="mdi-palette" class="std-glass-list-item" />
+				<v-divider class="mt-4 mb-4 std-glass-divider" />
 				<v-spacer />
 				
 				<!-- LOGO -->
@@ -55,7 +55,7 @@
 				</v-list-item>
 				
 				<!-- LOGOUT BUTTON -->
-				<v-list-item class="logout-button mt-8" @click="logout">
+				<v-list-item class="std-glass-button mt-8 mx-4" @click="logout">
 					<template v-slot:prepend>
 						<v-icon>mdi-logout</v-icon>
 					</template>
@@ -161,19 +161,6 @@ onMounted(() => { theme.initializeTheme() })
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* User profile card in app bar */
-.user-profile-card {
-    border-radius: 12px !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease;
-}
-
-.user-profile-card:hover {
-    background: rgba(255, 255, 255, 0.15) !important;
-}
-
 /* App title styling (fatten font) */
 .app-title {
 	font-weight: 700;
@@ -201,81 +188,6 @@ onMounted(() => { theme.initializeTheme() })
 /* Ensure main content area is transparent to show gradient */
 .v-main {
     background: transparent !important;
-}
-
-/* Make navigation drawer use liquid glass styling */
-.v-navigation-drawer.liquid-glass-drawer {
-    background: rgba(255, 255, 255, 0.05) !important;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    border-radius: 0 16px 16px 0;
-    overflow: hidden;
-}
-
-.liquid-glass-drawer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
-    pointer-events: none;
-    border-radius: 0 16px 16px 0;
-}
-
-.themed-list {
-    background: transparent !important;
-}
-
-.themed-list-item {
-    color: white !important;
-    border-radius: 8px !important;
-    margin: 4px 8px !important;
-    transition: all 0.3s ease !important;
-}
-
-.themed-list-item:hover {
-    background: var(--theme-secondary, #4A90E2) !important;
-    transform: translateX(4px);
-}
-
-.themed-list-item.v-list-item--active {
-    background: var(--theme-accent, #87CEEB) !important;
-    color: var(--theme-primary, #2E5984) !important;
-    font-weight: bold;
-}
-
-.themed-list-item .v-icon {
-    color: white !important;
-}
-
-.themed-list-item.v-list-item--active .v-icon {
-    color: var(--theme-primary, #2E5984) !important;
-}
-
-.themed-divider {
-    border-color: rgba(255, 255, 255, 0.3) !important;
-}
-
-.logout-button {
-    color: white !important;
-    border: 1px solid rgba(255, 255, 255, 0.5) !important;
-    border-radius: 8px !important;
-    margin: 8px 16px !important;
-    padding: 8px 16px !important;
-    transition: all 0.3s ease !important;
-}
-
-.logout-button:hover {
-    background: rgba(255, 255, 255, 0.1) !important;
-    border-color: rgba(255, 255, 255, 0.8) !important;
-}
-
-.logout-button .v-icon {
-    color: white !important;
 }
 
 

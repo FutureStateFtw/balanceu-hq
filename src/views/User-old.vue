@@ -30,25 +30,23 @@
         <v-row class="mb-4">
             <v-col cols="12">
                 <div class="std-glass-panel">
-                    <div class="px-4 py-3 d-flex align-center justify-space-between" @click="transactionsOpen = !transactionsOpen" style="cursor: pointer;">
+                    <div class="px-4 py-3 d-flex align-center justify-space-between">
                         <div class="text-subtitle-2 font-weight-medium std-text-glass-subtitle">Recent Transactions</div>
-                        <v-icon :icon="transactionsOpen ? 'mdi-chevron-up' : 'mdi-chevron-down'" size="18" class="std-text-glass-muted"></v-icon>
+                        <v-icon icon="mdi-arrow-up" size="18" class="std-text-glass-muted"></v-icon>
                     </div>
-                    <v-expand-transition>
-                        <div v-show="transactionsOpen" class="transaction-list">
-                            <div v-for="t in recent" :key="t.id" class="transaction-row">
-                                <div class="merchant">
-                                    <div class="text-body-2 font-weight-medium std-text-glass">{{ t.merchant }}</div>
-                                    <div class="text-caption std-text-glass-muted">{{ formatTransactionDate(t.date) }}</div>
-                                </div>
-                                <div class="amount" :class="{'is-meal': t.amountType==='meal'}">
-                                    <span v-if="t.amountType==='meal'">-1 Meal</span>
-                                    <span v-else>{{ formatCurrency(t.amount) }}</span>
-                                    <v-icon icon="mdi-chevron-right" size="16" class="ml-2 std-text-glass-muted"></v-icon>
-                                </div>
+                    <div class="transaction-list">
+                        <div v-for="t in recent" :key="t.id" class="transaction-row">
+                            <div class="merchant">
+                                <div class="text-body-2 font-weight-medium std-text-glass">{{ t.merchant }}</div>
+                                <div class="text-caption std-text-glass-muted">{{ formatTransactionDate(t.date) }}</div>
+                            </div>
+                            <div class="amount" :class="{'is-meal': t.amountType==='meal'}">
+                                <span v-if="t.amountType==='meal'">-1 Meal</span>
+                                <span v-else>{{ formatCurrency(t.amount) }}</span>
+                                <v-icon icon="mdi-chevron-right" size="16" class="ml-2 std-text-glass-muted"></v-icon>
                             </div>
                         </div>
-                    </v-expand-transition>
+                    </div>
                 </div>
             </v-col>
         </v-row>
@@ -66,7 +64,7 @@
 
         <!-- BOTTOM NAV TOGGLE BUTTON -->
         <div class="bottom-nav-wrapper" :class="{ open: bottomNavOpen }">
-            <transition name="std-fade-slide">
+            <transition name="fade-slide">
                 <div v-if="bottomNavOpen" class="bottom-nav-sheet">
                     <div v-for="act in bottomNav" :key="act.key" class="bottom-nav-item" @click="handleBottomAction(act)">
                         <v-icon :icon="act.icon" size="18" class="mr-3"></v-icon>
@@ -112,7 +110,6 @@ export default {
 
         // UI State
         bottomNavOpen: false,
-        transactionsOpen: true,
         dialog: false,
         dialogTitle: '',
         dialogMessage: '',
@@ -194,151 +191,152 @@ export default {
 </script>
 
 <style scoped>
-/* Text color overrides */
-.std-text-glass {
-    color: white !important;
+/* USER VIEW STYLES */
+.user-balance-card {
+    position: relative;
+    background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+    border: 1px solid rgba(255,255,255,0.25);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 14px;
+    padding: 16px 20px 12px 20px;
+    overflow: hidden;
+    transition: all .4s cubic-bezier(.25,.46,.45,.94);
 }
-
-.std-text-glass-subtitle {
-    color: rgba(255, 255, 255, 0.8) !important;
+.user-balance-card.hovered {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 14px 32px -4px rgba(0,0,0,0.35), 0 4px 12px rgba(135,206,235,.35);
 }
+.user-balance-card .card-inner { position: relative; z-index: 2; }
+.balance-icon { color: rgba(255,255,255,0.9); }
 
-.std-text-glass-muted {
-    color: rgba(255, 255, 255, 0.6) !important;
+.user-transactions-card {
+    position: relative;
+    background: linear-gradient(180deg, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.06) 100%);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 14px;
+    overflow: hidden;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 }
-
-.balance-card .card-inner { 
-    position: relative; 
-    z-index: 2; 
-}
-
-.balance-icon { 
-    color: rgba(255, 255, 255, 0.9) !important; 
-}
-
-.quick-action-card {
-    min-height: 120px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.transaction-list { 
-    padding: 0 12px 12px 12px; 
-}
-
+.transaction-list { padding: 0 12px 12px 12px; }
 .transaction-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 12px 8px 12px;
     border-radius: 10px;
-    transition: all 0.35s;
+    transition: all .35s;
     position: relative;
 }
-
 .transaction-row:hover {
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.06) 100%);
+    background: linear-gradient(90deg,rgba(255,255,255,.18) 0%, rgba(255,255,255,.06) 100%);
     transform: translateX(4px);
 }
+.transaction-row + .transaction-row { margin-top: 4px; }
+.merchant { flex: 1; min-width: 0; }
+.amount { font-weight: 600; color: rgba(255,255,255,0.95); display: flex; align-items: center; }
+.amount.is-meal { color: rgba(255,255,255,0.9); }
 
-.transaction-row + .transaction-row { 
-    margin-top: 4px; 
+.quick-action-card {
+    position: relative;
+    background: linear-gradient(165deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,.05) 100%);
+    border: 1px solid rgba(255,255,255,0.25);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 14px;
+    padding: 26px 12px 20px 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all .4s cubic-bezier(.25,.46,.45,.94);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-
-.merchant { 
-    flex: 1; 
-    min-width: 0; 
-}
-
-.amount { 
-    font-weight: 600; 
-    color: rgba(255, 255, 255, 0.95) !important; 
-    display: flex; 
-    align-items: center; 
-}
-
-.amount.is-meal { 
-    color: rgba(255, 255, 255, 0.9) !important; 
+.quick-action-card.hovered {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 14px 32px -4px rgba(0,0,0,0.35), 0 4px 12px rgba(135,206,235,.35);
 }
 
 .bottom-nav-wrapper {
     position: fixed;
-    bottom: 20px;
     left: 50%;
+    bottom: 20px;
     transform: translateX(-50%);
-    z-index: 1000;
-    transition: all 0.35s;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-
 .bottom-nav-sheet {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 16px 16px 4px 4px;
-    padding: 16px 20px 8px 20px;
-    margin-bottom: 8px;
-    min-width: 280px;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    width: 320px;
+    margin-bottom: 14px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.1) 100%);
+    border: 1px solid rgba(255,255,255,0.35);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    border-radius: 18px;
+    padding: 10px 0 4px 0;
+    box-shadow: 0 18px 38px -6px rgba(0,0,0,.55), 0 6px 14px rgba(135,206,235,.4);
 }
-
 .bottom-nav-item {
     display: flex;
     align-items: center;
-    padding: 8px 12px;
-    border-radius: 8px;
+    padding: 10px 18px;
+    color: rgba(255,255,255,0.92);
     cursor: pointer;
-    transition: all 0.25s;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 4px;
+    transition: all .35s;
+    border-radius: 12px;
+    margin: 2px 8px;
 }
-
 .bottom-nav-item:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: linear-gradient(90deg, rgba(255,255,255,.28) 0%, rgba(255,255,255,.12) 100%);
     transform: translateX(4px);
 }
-
 .nav-toggle-btn {
+    position: relative;
+    background: rgba(255, 255, 255, 0.05) !important;
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    min-width: 120px;
+    font-weight: 300;
+    color: white !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 .nav-toggle-btn::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transform: rotate(-45deg);
-    transition: all 0.4s;
-    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    pointer-events: none;
+    border-radius: 24px;
 }
 
-.nav-toggle-btn:hover::before {
-    opacity: 1;
-    transform: rotate(-45deg) translate(25%, 25%);
+.nav-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.2);
 }
+
+/* Fade-slide animation */
+.fade-slide-enter-active { transition: all .35s cubic-bezier(.25,.46,.45,.94); }
+.fade-slide-leave-active { transition: all .25s cubic-bezier(.55,.06,.68,.19); }
+.fade-slide-enter-from, .fade-slide-leave-to { opacity: 0; transform: translateY(12px); }
+
+/* Glow border reused */
+.glass-border-glow { pointer-events:none; }
 
 @media (max-width: 600px) {
-    .balance-card .card-inner {
-        padding: 12px 16px !important;
-    }
-    
-    .quick-action-card {
-        min-height: 100px;
-        padding: 20px 12px !important;
-    }
-    
-    .bottom-nav-sheet {
-        min-width: 260px;
-        margin-left: 10px;
-        margin-right: 10px;
-    }
+    .user-balance-card { padding: 14px 16px 10px 16px; }
+    .quick-action-card { padding: 22px 12px 16px 12px; }
+    .bottom-nav-sheet { width: 280px; }
 }
 </style>
