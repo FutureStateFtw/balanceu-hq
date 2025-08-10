@@ -268,6 +268,7 @@ export default {
 /* BALANCE CARD STYLING */
 .balance-card .card-inner { 
     position: relative; 
+    padding: 18px 18px !important;
     z-index: 2; 
 }
 
