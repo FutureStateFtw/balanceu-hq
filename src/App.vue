@@ -2,16 +2,16 @@
 	<v-app id="app" class="gradient-background">
 
 		<!-- BRAND HEADER -->
-		<v-app-bar v-if="!isLoginRoute" height="53" class="text-white elevation-0 text-h5 themed-brand-header" color="transparent">
+		<!-- <v-app-bar v-if="!isLoginRoute" height="53" class="text-white elevation-0 text-h5 themed-brand-header" color="primary">
 			<v-row class="pl-9">FutureState</v-row>
-		</v-app-bar>
+		</v-app-bar> -->
 
 		<!-- APPLICATION BAR -->
-		<v-app-bar v-if="!isLoginRoute" class="pr-lg-8 elevation-0 transparent-app-bar text-white" :height="isPhone ? 70 : 100" :class="isPhone ? 'pl-5' : ''" color="transparent">
-			<v-row style="width:100%;" class="justify-center align-center font-weight-light text-white" >
+		<v-app-bar v-if="!isLoginRoute" class="pr-lg-8 elevation-0 text-white" :height="isPhone ? 70 : 100" :class="isPhone ? 'pl-5' : ''" color="primary">
+			<v-row style="width:100%;" class="align-center font-weight-light text-white" >
 				
 				<!-- HAMBURGER -->
-				<v-col cols="auto" class="ml-3">
+				<v-col cols="auto" class="ml-n3">
 					<v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 				</v-col>
 				
@@ -154,14 +154,6 @@ onMounted(() => {
     border-bottom: 2px solid var(--theme-secondary, #ffffff) !important;
 	border-color: rgba(255, 255, 255, 0.1) !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
-}
-
-/* Make the application bar transparent so gradient shows through */
-.transparent-app-bar {
-    background: rgba(255, 255, 255, 0.1) !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* App title styling (fatten font) */
