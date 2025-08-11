@@ -29,8 +29,11 @@
 							<span class="user-name">{{ userDisplayName }}</span>
 						</v-col>
 						<v-col cols="auto" class="mr-4">
-							<v-avatar size="40" class="elevation-2 std-glass-avatar" @click="profileDialog=true">
-								<v-img v-if="user.avatarUrl || user.currentUser?.avatar" :src="user.avatarUrl || user.currentUser?.avatar" cover></v-img>
+							<v-avatar size="60" class="elevation-2 std-glass-avatar" @click="profileDialog=true">
+								<img v-if="user.avatarUrl || user.currentUser?.avatar" 
+									:src="user.avatarUrl || user.currentUser?.avatar" 
+									class="high-quality-avatar-img"
+									@load="onAvatarLoad" />
 								<div v-else class="d-flex align-center justify-center fill-height text-subtitle-2 text-white font-weight-medium">{{ userInitials }}</div>
 							</v-avatar>
 						</v-col>
@@ -116,6 +119,30 @@ methods: {
 		user.currentUser = null
 		this.drawer = false
 		this.$router.push('/login')
+	},
+
+	// Handle avatar image loading with better quality
+	onAvatarLoad(event) {
+		const img = event.target
+		if (img.naturalWidth > 120) { // Only process if image is larger than avatar size
+			// Create canvas for high-quality resizing
+			const canvas = document.createElement('canvas')
+			const ctx = canvas.getContext('2d')
+			
+			// Set canvas size to 2x avatar size for better quality
+			canvas.width = 120
+			canvas.height = 120
+			
+			// Use better scaling
+			ctx.imageSmoothingEnabled = true
+			ctx.imageSmoothingQuality = 'high'
+			
+			// Draw resized image
+			ctx.drawImage(img, 0, 0, 120, 120)
+			
+			// Replace image source with canvas data
+			img.src = canvas.toDataURL('image/png', 0.95)
+		}
 	}
 },
 
@@ -178,6 +205,30 @@ onMounted(() => {
 /* Ensure main content area is transparent to show gradient */
 .v-main {
     background: transparent !important;
+}
+
+/* High-quality avatar image resizing */
+.high-quality-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
+
+/* Glass avatar styling */
+.std-glass-avatar {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.std-glass-avatar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 

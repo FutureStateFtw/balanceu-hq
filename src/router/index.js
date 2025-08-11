@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import About from '../views/About.vue'
 import Admin from '../views/Admin.vue'
 import Theme from '../views/Theme.vue'
@@ -10,7 +10,7 @@ import Deposit from '../views/Deposit.vue'
 import { user, ui, api, app } from '@/stores'
 
 const router = createRouter({
-	history: createWebHistory(import.meta.env.BASE_URL),  // Use the base URL from vite.config.js for deployment (if set)
+	history: createWebHashHistory(import.meta.env.BASE_URL),  // Use the base URL from vite.config.js for deployment (if set)
 	routes: [
 		{
 			path: '/admin',
