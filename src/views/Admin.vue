@@ -1,8 +1,6 @@
 <template>
 	<v-container fluid class="pa-4 pa-md-6">
 		
-
-		
 		<!-- KEY METRICS CARDS -->
 		<v-row class="mb-4 mb-md-6">
 			<v-col cols="6" sm="6" md="3" xl="3">
