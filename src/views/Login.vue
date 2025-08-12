@@ -72,7 +72,7 @@
             const success = user.login(username.value.trim(), password.value)
             loading.value = false
             if (success) {
-                router.push('/user')
+                router.push('/')
             } else {
                 error.value = 'Invalid credentials'
             }

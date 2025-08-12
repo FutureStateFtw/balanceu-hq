@@ -29,16 +29,19 @@ state: () => ({
     currentUser: 		null,
 
     // MOCK USER DIRECTORY (REMOVE WHEN REAL AUTH WIRED)
-    users: [
+   users: [
         { userId: 101, studentId: '123450', displayName: 'Joe',     username: 'joe',     password: 'FutureStatePassword' },
         { userId: 102, studentId: '123451', displayName: 'Chris',   username: 'chris',   password: 'FutureStatePassword' },
         { userId: 103, studentId: '123452', displayName: 'Erika',   username: 'erika',   password: 'FutureStatePassword' },
         { userId: 104, studentId: '123456', displayName: 'Drennen', username: 'drennen', password: 'FutureStatePassword' },
-        { userId: 104, studentId: '123457', displayName: 'Jon', username: 'jon', password: 'FutureStatePassword' },
-        { userId: 104, studentId: '123458', displayName: 'Jake', username: 'jake', password: 'FutureStatePassword' },
-        { userId: 104, studentId: '123459', displayName: 'Colin', username: 'colin', password: 'FutureStatePassword' },
-        { userId: 104, studentId: '123460', displayName: 'Olivia', username: 'olivia', password: 'FutureStatePassword' },
-        { userId: 104, studentId: '123461', displayName: 'Daniel', username: 'daniel', password: 'FutureStatePassword' },
+        { userId: 105, studentId: '123457', displayName: 'Jon', username: 'jon', password: 'FutureStatePassword' },
+        { userId: 106, studentId: '123458', displayName: 'Jake', username: 'jake', password: 'FutureStatePassword' },
+        { userId: 107, studentId: '123459', displayName: 'Colin', username: 'colin', password: 'FutureStatePassword' },
+        { userId: 108, studentId: '123460', displayName: 'Olivia', username: 'olivia', password: 'FutureStatePassword' },
+        { userId: 109, studentId: '123461', displayName: 'Daniel', username: 'daniel', password: 'FutureStatePassword' },
+        { userId: 110, studentId: '123462', displayName: 'Brandon', username: 'brandon', password: 'FutureStatePassword' },
+        { userId: 111, studentId: '123463', displayName: 'Matt', username: 'matt', password: 'FutureStatePassword' },
+        { userId: 112, studentId: '123464', displayName: 'Chip', username: 'chip', password: 'FutureStatePassword' },
     ],
 }),
 

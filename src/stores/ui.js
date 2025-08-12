@@ -9,7 +9,7 @@ state: () => ({
     snack:          false,
     snackText:      null,
     snackColor:     "warning",
-    pageTitle:      "BalanceU Admin",  // Default page title, will be overridden by router beforeEnter in router/index.js (if applicable)
+    pageTitle:      "BalanceU HQ",  // Default page title, will be overridden by router beforeEnter in router/index.js (if applicable)
     loading:        true,          // Global loading indicator, under the main app bar (top of page) for async operations.
 
     // Confirm Dialog Properties

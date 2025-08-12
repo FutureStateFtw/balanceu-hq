@@ -9,7 +9,7 @@
 						<v-avatar size="80" color="accent" class="mb-4">
 							<v-icon icon="mdi-shield-account" size="x-large" color="primary"></v-icon>
 						</v-avatar>
-						<h1 class="text-h3 font-weight-light text-white mb-4">BalanceU Admin Portal</h1>
+						<h1 class="text-h3 font-weight-light text-white mb-4">BalanceU HQ Portal</h1>
 						<p class="text-h6 text-white opacity-90 font-weight-light mb-0">
 							Where Operational Intelligence Lives
 						</p>
@@ -27,7 +27,7 @@
 									<h2 class="text-h4 font-weight-light text-white">Unified Administrative Control</h2>
 								</div>
 								<p class="text-body-1 text-white opacity-90 mb-4 leading-relaxed">
-									The BalanceU Admin Portal serves as your central command center for all administrative operations. 
+									The BalanceU HQ Admin Portal serves as your central command center for all administrative operations. 
 									This comprehensive platform empowers administrators to oversee every aspect of the BalanceU ecosystem 
 									with precision and efficiency.
 								</p>

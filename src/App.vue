@@ -17,7 +17,7 @@
 				
 				
 				<v-col class="text-white" align="start">
-					<div class="text-h4 font-weight-bold text-white mb-1">Balance<span class="accent">U</span></div>
+					<div class="text-h4 font-weight-bold text-white mb-1">Balance<span class="accent">U</span> HQ</div>
 				</v-col>
 				<v-spacer></v-spacer>
 
@@ -44,17 +44,15 @@
 
 		<!-- MAIN MENU -->
 		<v-navigation-drawer v-if="!isLoginRoute" v-model="drawer" temporary width="375" class="std-glass-drawer">
-			<v-list nav dense class="std-glass-list">
-				<v-list-item to="/user" title="User" prepend-icon="mdi-account" class="std-glass-list-item" />
-				<v-list-item to="/admin" title="Admin" prepend-icon="mdi-shield-account" class="std-glass-list-item" />
+			<v-list nav dense class="std-glass-list d-flex flex-column" style="height: 100%;">
+				<v-list-item to="/" title="Home" prepend-icon="mdi-shield-account" class="std-glass-list-item" />
 				<v-list-item to="/About" title="About" prepend-icon="mdi-information" class="std-glass-list-item" />
 				<v-list-item to="/theme" title="Theme Selection" prepend-icon="mdi-palette" class="std-glass-list-item" />
 				<v-divider class="mt-4 mb-4 std-glass-divider" />
 				<v-spacer />
 				
-				
-				<!-- LOGOUT BUTTON -->
-				<v-list-item class="std-glass-button mt-8 mx-4" @click="logout">
+				<!-- LOGOUT BUTTON PINNED TO BOTTOM -->
+				<v-list-item class="std-glass-button mb-4 mx-4" @click="logout">
 					<template v-slot:prepend>
 						<v-icon>mdi-logout</v-icon>
 					</template>

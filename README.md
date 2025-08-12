@@ -1,9 +1,9 @@
 <div style="display: flex; align-items: center;">
   <img src="https://apps.ufs.arizona.edu/buildingmanager/assets/BlockA_w_line-290716d5.png" alt="Block A" style="margin-right: 10px;"/>
-  <h1 style="margin: 0;">BalanceU Admin</h1>
+  <h1 style="margin: 0;">BalanceU HQ</h1>
 </div>
 
-BalanceU Admin 
+BalanceU HQ 
 
 ## Table of Contents
 
@@ -42,12 +42,11 @@ Ensure you have the following installed on your development environment:
 
 1. Clone the repository:
 
-    ```git clone https://KyloDren74@bitbucket.org/kylo_dren/balanceuadmin.git
     ```
 
 2. Navigate to the project directory:
 
-    ```cd BalanceUAdmin
+    ```cd BalanceU-HQ
     ```
 
 3. Install the dependencies:
@@ -65,7 +64,7 @@ To start the application in development mode, run the following command:
 Here's a quick overview of the project's structure:
 
 ```plaintext
-BalanceUAdmin/
+BalanceU-HQ/
 ├── public/             # Static files
 │   └── index.html      # Main HTML file
 ├── src/
@@ -95,11 +94,6 @@ Below are the scripts available for this project:
 - **`npm run build`**
     - Builds the application for production. The output files will be located in the `dist` folder and optimized for performance.
 
-- **`npm deploy:beta || deploy:prod`**
-    - Robocopys the build files to the destination.  This requires editing to remove the underscore and replace 'balanceuadmin' with correct path.
- 
-- **`npm build:deploy:beta || build:deploy:prod`**
-    - Combines the build and deploy in one step.  This requires editing to remove the underscore and replace 'balanceuadmin' with correct path.
      
 ## Roles and Permissions
 - JWT is generated in common API
@@ -112,11 +106,11 @@ Below are the scripts available for this project:
 - store/user.js - related to this users role, token, login
 - store/ui.js   - holds state for all ui, show/hide, loading, etc.
 
-## Starting a new app from BalanceU Admin
+## Starting a new app from BalanceU HQ
 
 - Clone
 - Install Node, npm install, npm run dev.  Make sure it runs
-- Do global search on 'BalanceU Admin', and address each instance.
+- Do global search on 'BalanceU HQ', and address each instance.
 - Start new EMPTY repository on remote, no readme, no .gitignore.
 - Copy remote address
 - Edit local app's remote address with new remote address

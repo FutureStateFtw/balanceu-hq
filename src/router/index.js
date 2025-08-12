@@ -13,7 +13,7 @@ const router = createRouter({
 	history: createWebHashHistory(import.meta.env.BASE_URL),  // Use the base URL from vite.config.js for deployment (if set)
 	routes: [
 		{
-			path: '/admin',
+			path: '/',
 			name: 'Admin',
 			component: Admin,
 			beforeEnter() { ui.pageTitle="BalanceU " },
@@ -34,18 +34,6 @@ const router = createRouter({
 			path: '/ServiceDown',
 			name: 'ServiceDown',
 			component: ServiceDown,
-		},
-		{
-			path: '/user',
-			name: 'User',
-			component: User,
-			beforeEnter() { ui.pageTitle="BalanceU" },
-		},
-		{
-			path: '/deposit',
-			name: 'Deposit',
-			component: Deposit,
-			beforeEnter() { ui.pageTitle="BalanceU - Deposit Funds" },
 		},
 		{
 			path: '/login',
