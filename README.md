@@ -1,9 +1,11 @@
 <div style="display: flex; align-items: center;">
   <img src="https://apps.ufs.arizona.edu/buildingmanager/assets/BlockA_w_line-290716d5.png" alt="Block A" style="margin-right: 10px;"/>
-  <h1 style="margin: 0;">BalanceU HQ</h1>
+  <h1 style="margin: 0;">BalanceU Admin</h1>
 </div>
 
 BalanceU HQ 
+
+This is a 100% clientside draft mockup of BalanceU HQ.
 
 ## Table of Contents
 
@@ -22,9 +24,6 @@ BalanceU HQ
 - Basic project structure and components
 - Pinia for state management
 - Vue Router for client-side routing
-- UofA Branding, Styling
-- Webauth authentication
-- API calls to get employee Profile information
 - Employee Search
 - Building Search
 - Other example components
@@ -42,11 +41,12 @@ Ensure you have the following installed on your development environment:
 
 1. Clone the repository:
 
+    ```git clone https://github.com/FutureStateFtw/balanceu-hq
     ```
 
 2. Navigate to the project directory:
 
-    ```cd BalanceU-HQ
+    ```cd BalanceU HQ
     ```
 
 3. Install the dependencies:
@@ -64,7 +64,7 @@ To start the application in development mode, run the following command:
 Here's a quick overview of the project's structure:
 
 ```plaintext
-BalanceU-HQ/
+BalanceU HQ/
 ├── public/             # Static files
 │   └── index.html      # Main HTML file
 ├── src/
@@ -89,29 +89,20 @@ Below are the scripts available for this project:
 ### Script Details
 
 - **`npm run dev`**
-    - Launches the development server with hot-reloading, allowing you to see changes in real-time. The application will be available at [http://localhost:3000](http://localhost:3000) by default.
+    - Launches the development server with hot-reloading, allowing you to see changes in real-time.
 
 - **`npm run build`**
     - Builds the application for production. The output files will be located in the `dist` folder and optimized for performance.
 
+- **`npm deploy:beta || deploy:prod`**
+    - Robocopys the build files to the destination.  This requires editing to remove the underscore and replace 'BalanceU HQ' with correct path.
+ 
+- **`npm build:deploy:beta || build:deploy:prod`**
+    - Combines the build and deploy in one step.  This requires editing to remove the underscore and replace 'BalanceU HQ' with correct path.
      
-## Roles and Permissions
-- JWT is generated in common API
-- Roles are store in the "Cerberus" system
-- An app-id in .env will match up to the Cerberus roles encoded into token
-
 ## Store Design
 - store/app.js  - main store for this apps logic and state
 - store/api.js  - holds all external apis, no business logic
 - store/user.js - related to this users role, token, login
 - store/ui.js   - holds state for all ui, show/hide, loading, etc.
 
-## Starting a new app from BalanceU HQ
-
-- Clone
-- Install Node, npm install, npm run dev.  Make sure it runs
-- Do global search on 'BalanceU HQ', and address each instance.
-- Start new EMPTY repository on remote, no readme, no .gitignore.
-- Copy remote address
-- Edit local app's remote address with new remote address
-- Push
